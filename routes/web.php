@@ -22,3 +22,7 @@ Route::get('/rajaa', function () {
 Route::get('/JohannOrens', function () {
     return view('johannorens');
 });
+
+Route::get('/mariegrace', function () {
+    return view('mariegrace');
+});
