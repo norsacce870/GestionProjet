@@ -11,5 +11,9 @@ Route::get('/yanis', function () {
 });
 
 Route::get('/cassandre', function () {
-    return view('welcome');
+    return view('cassyy');
+});
+
+Route::get('/rajaa', function () {
+    return view('rajaa');
 });
