@@ -18,6 +18,10 @@ Route::get('/rajaa', function () {
     return view('rajaa');
 });
 
+Route::get('/tchetche', function () {
+    return view('tchetche');
+});
+
 
 Route::get('/JohannOrens', function () {
     return view('johann-orens');
