@@ -20,7 +20,7 @@ Route::get('/rajaa', function () {
 
 
 Route::get('/JohannOrens', function () {
-    return view('johannorens');
+    return view('johann-orens');
 });
 
 Route::get('/mariegrace', function () {
