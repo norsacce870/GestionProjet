@@ -13,3 +13,8 @@ Route::get('/yanis', function () {
 Route::get('/cassandre', function () {
     return view('welcome');
 });
+
+
+Route::get('/JohannOrens', function () {
+    return view('johannorens');
+});
