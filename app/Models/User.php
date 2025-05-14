@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
         'password',
     ];
@@ -48,36 +49,36 @@ class User extends Authenticatable
 
     public function players()
     {
-        return $this->hasMany(Players::class, 'id');
+        return $this->hasMany(Player::class);
     }
      public function galeries()
     {
-        return $this->hasMany(Galeries::class, 'id');
+        return $this->hasMany(Galerie::class);
     }
 
     public function coordonnees()
     {
-        return $this->hasMany(Cordonnees::class, 'id');
+        return $this->hasMany(Coordonnee::class);
     }
 
     public function videos()
     {
-        return $this->hasMany(Videos::class, 'id');
+        return $this->hasMany(Video::class);
     }
 
     public function actualites()
     {
-        return $this->hasMany(Actualites::class, 'id');
+        return $this->hasMany(Actualite::class);
     }
 
     public function partenaires()
     {
-        return $this->hasMany(Partenaires::class, 'id');
+        return $this->hasMany(Partenaire::class);
     }
 
     public function publicites()
     {
-        return $this->hasMany(Publicites::class, 'id');
+        return $this->hasMany(Publicite::class);
     }
 
 }

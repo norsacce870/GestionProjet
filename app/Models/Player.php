@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Players extends Model
+class Player extends Model
 {
     /** @use HasFactory<\Database\Factories\PlayersFactory> */
     use HasFactory;
@@ -20,12 +20,13 @@ class Players extends Model
         'taille',
         'club',
         'valeur',
-        'fin_contrat_at'
+        'fin_contrat_at',
+        'user_id',
     ];
 
 
      public function user()
 {
-    return $this->belongsTo(User::class,'user_id');
+    return $this->belongsTo(User::class);
 }
 }

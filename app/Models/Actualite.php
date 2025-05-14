@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actualites extends Model
+class Actualite extends Model
 {
     /** @use HasFactory<\Database\Factories\ActualitesFactory> */
     use HasFactory;
@@ -13,12 +13,13 @@ class Actualites extends Model
     protected $fillable = [
         'nom',
         'auteur',
-        'contenu'
+        'contenu',
+        'user_id',
     ];
 
 
     public function user()
 {
-    return $this->belongsTo(User::class,'user_id');
+    return $this->belongsTo(User::class);
 }
 }

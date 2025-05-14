@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class Galerie extends Model
 {
-    /** @use HasFactory<\Database\Factories\ContactsFactory> */
+    /** @use HasFactory<\Database\Factories\GaleriesFactory> */
     use HasFactory;
 
      protected $fillable = [
         'nom',
-        'prenom',
-        'message'
+        'user_id',
     ];
+
+
+ public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

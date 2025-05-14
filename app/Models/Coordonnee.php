@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cordonnees extends Model
+class Coordonnee extends Model
 {
     /** @use HasFactory<\Database\Factories\CordonneesFactory> */
     use HasFactory;
@@ -13,11 +13,12 @@ class Cordonnees extends Model
      protected $fillable = [
         'nom',
         'icone',
+        'user_id',
     ];
 
 
      public function user()
-{
-    return $this->belongsTo(User::class,'user_id');
-}
+    {
+        return $this->belongsTo(User::class);
+    }
 }
