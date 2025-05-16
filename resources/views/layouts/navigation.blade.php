@@ -16,6 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('actualite.index')" :active="request()->routeIs('actualite.index')">
+                        {{ __('Actualités') }}
+                    </x-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('palmares.index')" :active="request()->routeIs('palmares.index')">
                         {{ __('Palmares') }}
@@ -39,6 +44,26 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('player.index')" :active="request()->routeIs('player.index')">
                         {{ __('Players') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
+                        {{ __('Contacts') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('publicite.index')" :active="request()->routeIs('publicite.index')">
+                        {{ __('Publicités') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('partenaire.index')" :active="request()->routeIs('partenaire.index')">
+                        {{ __('Partenaires') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('galerie.index')" :active="request()->routeIs('galerie.index')">
+                        {{ __('Galerie') }}
                     </x-nav-link>
                 </div>
 
