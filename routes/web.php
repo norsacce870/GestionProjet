@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/publicite', PubliciteController::class);
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
+    Route::resource('admin/palmares', PalmaresController::class);
 
 
 
