@@ -1,7 +1,10 @@
 {{-- filepath: c:\Users\H P\Desktop\gestion projet\GestionProjet\resources\views\user\index.blade.php --}}
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            {{ __('Liste des utilisateurs') }}
+        </h2>
+    </x-slot>
 <div class="min-h-screen bg-gray-100 py-8">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Liste des Utilisateurs</h2>
@@ -51,4 +54,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout>
