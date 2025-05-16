@@ -11,6 +11,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PubliciteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\PalmaresController;
 
 
 Route::get('/', function () {
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
 
 
 
+});
+
+Route::get('/tchetche', function () {
+    return view('tchetche');
 });
 
 
