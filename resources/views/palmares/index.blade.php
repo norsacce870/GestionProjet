@@ -1,7 +1,5 @@
 {{-- filepath: c:\Users\H P\Desktop\gestion projet\GestionProjet\resources\views\coordonnee\index.blade.php --}}
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 <div class="min-h-screen bg-gray-100 py-8">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Liste des Palmares</h2>
@@ -42,4 +40,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout>
