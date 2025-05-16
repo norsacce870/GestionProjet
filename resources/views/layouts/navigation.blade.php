@@ -25,12 +25,23 @@
                     <x-nav-link :href="route('coordonnee.index')" :active="request()->routeIs('coordonnee.index')">
                         {{ __('Coordonnées') }}
                     </x-nav-link>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                         {{ __('Utilisateurs') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')">
+                        {{ __('Vidéos') }}
+                    </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('player.index')" :active="request()->routeIs('player.index')">
+                        {{ __('Players') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
