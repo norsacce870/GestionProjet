@@ -1,18 +1,20 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            {{ __('Ajouter une Publicité') }}
+        </h2>
+    </x-slot>
+    <div class="max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-md">
+        <form action="{{ route('publicite.store') }}" method="POST">
+            @csrf
+            <label class="block font-semibold">Nom :</label>
+            <input type="text" name="nom" class="w-full p-2 border rounded-md" required>
 
-@section('content')
-<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-    <h1 class="text-2xl font-bold mb-4">Ajouter une Publicité</h1>
-<form action="{{ route('publicite.store') }}" method="POST">
-    @csrf
-    <label class="block font-semibold">Nom :</label>
-    <input type="text" name="nom" class="w-full border p-2 rounded-md" required>
+            <label class="block mt-4 font-semibold">Description :</label>
+            <textarea name="description" class="w-full p-2 border rounded-md"></textarea>
 
-    <label class="block font-semibold mt-4">Description :</label>
-    <textarea name="description" class="w-full border p-2 rounded-md"></textarea>
-
-    <!-- Bouton de soumission -->
-    <button type="submit">Ajouter</button>
-</form>
-</div>
-@endsection
+            <!-- Bouton de soumission -->
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+</x-app-layout>

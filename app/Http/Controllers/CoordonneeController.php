@@ -42,6 +42,11 @@ public function store(Request $request)
         $coordonnee = Coordonnee::findOrFail($id);
         return redirect()->route('coordonnee.show', $coordonnee->id);
     }
+    public function edit($id)
+{
+    $coordonnee = Coordonnee::findOrFail($id);
+    return view('coordonnee.edit', compact('coordonnee'));
+}
 
     // Update the specified resource in storage.
    public function update(Request $request, $id)

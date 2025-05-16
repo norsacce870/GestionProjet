@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
 
 
     <div class="min-h-screen flex items-center justify-center bg-gray-100 py-8">
@@ -42,4 +41,4 @@
 </div>
 
 
-@endsection
+</x-app-layout>
