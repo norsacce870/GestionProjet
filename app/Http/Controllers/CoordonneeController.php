@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Coordonnee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 class CoordonneeController extends Controller
 {
     // Display a listing of the resource.
@@ -22,23 +22,25 @@ class CoordonneeController extends Controller
 
 
     // Store a newly created resource in storage.
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'nom' => 'nullable|string|max:255',
-            'icone' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'user_id' => 'required|exists:users,id',
-        ]);
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'nom' => 'nullable|string|max:255',
+        'icone' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        // 'user_id' => 'required|exists:users,id', // REMOVE THIS LINE
+    ]);
 
-        if ($request->hasFile('icone')) {
-            $path = $request->file('icone')->store('icones', 'public');
-            $validated['icone'] = $path;
-        }
-
-        $coordonnee = Coordonnee::create($validated);
-        $request->session()->flash('success', 'Coordonnée enregistrée avec succès.');
-        return redirect()->route('coordonnee.index');
+    if ($request->hasFile('icone')) {
+        $path = $request->file('icone')->store('icones', 'public');
+        $validated['icone'] = $path;
     }
+
+    $validated['user_id'] = Auth::id(); // Set to current user
+
+    $coordonnee = Coordonnee::create($validated);
+    $request->session()->flash('success', 'Coordonnée enregistrée avec succès.');
+    return redirect()->route('coordonnee.index');
+}
 
     // Display the specified resource.
     public function show($id)
@@ -49,27 +51,28 @@ class CoordonneeController extends Controller
 
     // Update the specified resource in storage.
     public function update(Request $request, $id)
-    {
-        $coordonnee = Coordonnee::findOrFail($id);
+{
+    $coordonnee = Coordonnee::findOrFail($id);
 
-        $validated = $request->validate([
-            'nom' => 'nullable|string|max:255',
-            'icone' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'user_id' => 'nullable|exists:users,id',
-        ]);
+    $validated = $request->validate([
+        'nom' => 'nullable|string|max:255',
+        'icone' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        // 'user_id' => 'nullable|exists:users,id', // REMOVE THIS LINE
+    ]);
 
-        if ($request->hasFile('icone')) {
-            // Optionally delete old image
-            if ($coordonnee->icone && Storage::disk('public')->exists($coordonnee->icone)) {
-                Storage::disk('public')->delete($coordonnee->icone);
-            }
-            $path = $request->file('icone')->store('icones', 'public');
-            $validated['icone'] = $path;
+    if ($request->hasFile('icone')) {
+        if ($coordonnee->icone && Storage::disk('public')->exists($coordonnee->icone)) {
+            Storage::disk('public')->delete($coordonnee->icone);
         }
-
-        $coordonnee->update($validated);
-        return redirect()->route('coordonnee.show', $coordonnee->id);
+        $path = $request->file('icone')->store('icones', 'public');
+        $validated['icone'] = $path;
     }
+
+    $validated['user_id'] = Auth::id(); // Set to current user
+
+    $coordonnee->update($validated);
+    return redirect()->route('coordonnee.show', $coordonnee->id);
+}
 
     // Remove the specified resource from storage.
     public function destroy($id)
