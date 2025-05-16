@@ -10,14 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('coordonnees', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom')->nullable();
-            $table->string('icone')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->timestamps();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade')->nullable();
-        });
+       Schema::create('coordonnees', function (Blueprint $table) {
+    $table->id();
+    $table->string('nom')->nullable();
+    $table->string('icone')->nullable();
+    $table->unsignedBigInteger('user_id')->nullable();
+    $table->timestamps();
+
+    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+});
+
     }
 
     /**
