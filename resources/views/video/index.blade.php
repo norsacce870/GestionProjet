@@ -15,7 +15,7 @@
                         <div class="max-w-6xl mx-auto">
                             <!-- Header -->
                             <div class="flex justify-between items-center mb-6">
-                                <a href="{{ route('video.create') }}" class="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-md">
+                                <a href="{{ route('video.create') }}" class="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-md">
                                     + Ajouter une vidéo
                                 </a>
                                 <div class="relative">
@@ -63,7 +63,7 @@
                                                 <form action="{{ route('video.destroy', $video->id) }}" method="POST" class="inline-block">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="bg-pink-500 text-white px-2 py-1 rounded">Supprimer</button>
+                                                    <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Supprimer</button>
                                                 </form>
 
                                                 <a href="{{ route('video.show', $video->id) }}" class="bg-green-500 text-white px-2 py-1 rounded">Voir</a>
