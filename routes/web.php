@@ -42,10 +42,6 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::get('/tchetche', function () {
-    return view('tchetche');
-});
-
 
 
 require __DIR__.'/auth.php';
