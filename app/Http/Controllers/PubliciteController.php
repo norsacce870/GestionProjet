@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Models\Publicite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -7,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class PubliciteController extends Controller
 {
     /**
-     * Affiche les publicités de l'utilisateur connecté.
+     * Affiche la liste des publicités.
      */
     public function index()
     {
         $publicites = Publicite::where('user_id', Auth::id())->get();
-        return view('publicites.index', compact('publicites'));
+        return view('publicite.index', compact('publicites'));
     }
 
     /**
@@ -20,7 +22,7 @@ class PubliciteController extends Controller
      */
     public function create()
     {
-        return view('publicites.create');
+        return view('publicite.create');
     }
 
     /**
@@ -31,15 +33,17 @@ class PubliciteController extends Controller
         $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'lien' => 'nullable|url',
         ]);
 
         Publicite::create([
             'nom' => $request->nom,
             'description' => $request->description,
-            'user_id' => Auth::id(),
+            'lien' => $request->lien,
+            //'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('publicites.index')->with('success', 'Publicité ajoutée avec succès !');
+        return redirect()->route('publicite.index')->with('success', 'Publicité ajoutée avec succès !');
     }
 
     /**
@@ -47,8 +51,7 @@ class PubliciteController extends Controller
      */
     public function show(Publicite $publicite)
     {
-        $this->authorize('view', $publicite);
-        return view('publicites.show', compact('publicite'));
+        return view('publicite.show', compact('publicite'));
     }
 
     /**
@@ -56,8 +59,7 @@ class PubliciteController extends Controller
      */
     public function edit(Publicite $publicite)
     {
-        $this->authorize('update', $publicite);
-        return view('publicites.edit', compact('publicite'));
+        return view('publicite.edit', compact('publicite'));
     }
 
     /**
@@ -65,16 +67,15 @@ class PubliciteController extends Controller
      */
     public function update(Request $request, Publicite $publicite)
     {
-        $this->authorize('update', $publicite);
-
         $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'lien' => 'nullable|url',
         ]);
 
         $publicite->update($request->all());
 
-        return redirect()->route('publicites.index')->with('success', 'Publicité mise à jour avec succès !');
+        return redirect()->route('publicite.index')->with('success', 'Publicité mise à jour avec succès !');
     }
 
     /**
@@ -82,8 +83,7 @@ class PubliciteController extends Controller
      */
     public function destroy(Publicite $publicite)
     {
-        $this->authorize('delete', $publicite);
         $publicite->delete();
-        return redirect()->route('publicites.index')->with('success', 'Publicité supprimée avec succès !');
+        return redirect()->route('publicite.index')->with('success', 'Publicité supprimée avec succès !');
     }
 }
