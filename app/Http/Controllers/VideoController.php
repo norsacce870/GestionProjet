@@ -37,6 +37,7 @@ class VideoController extends Controller
         Video::create([
             'titre' => $request->titre,
             'lien' => $request->lien,
+            'user_id' => auth()->id(),
         ]);
 
 

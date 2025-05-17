@@ -7,20 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Enums\Fit;
 
-class Publicite extends Model implements HasMedia
+class Palmares extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\PublicitesFactory> */
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'nom',
-        'description',
-        'user_id',
+        'valeur',
+        'titre',
+        'sous_titre',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function registerMediaConversions(?Media $media = null): void
     {
@@ -40,8 +43,4 @@ class Publicite extends Model implements HasMedia
             ->width(1200)
             ->nonQueued();
     }
-    public function user()
-{
-    return $this->belongsTo(User::class);
-}
 }

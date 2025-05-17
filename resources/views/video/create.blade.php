@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-            <h1 class="mb-4 text-2xl font-bold text-center text-pink-600">Ajouter une nouvelle vidéo</h1>
+            <h1 class="mb-4 text-2xl font-bold text-center text-blue-600">Ajouter une nouvelle vidéo</h1>
 
             <form action="{{ route('video.store') }}" method="POST" class="space-y-4">
                 @csrf
@@ -32,7 +32,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="w-full px-4 py-2 text-white bg-pink-500 rounded hover:bg-pink-600">
+                <button type="submit" class="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                     Enregistrer
                 </button>
             </form>
