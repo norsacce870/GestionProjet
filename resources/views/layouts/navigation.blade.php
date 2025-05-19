@@ -43,7 +43,7 @@
 
                     <div class="relative text-sm font-medium text-gray-600 hover:text-blue-600 mt-2"
                         @click.away="openUsers = false">
-                        <x-nav-link :href="route('player.index')" :active="request()->routeIs('player.index')"
+                        <x-nav-link :href="route('players.index')" :active="request()->routeIs('players.index')"
                             class="block px-4 py-2 mt-2 text-sm hover:bg-gray-100">
                             {{ __('Players') }}
                         </x-nav-link>

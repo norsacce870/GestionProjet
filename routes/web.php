@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/coordonnee', CoordonneeController::class);
     Route::resource('admin/galerie', GalerieController::class);
     Route::resource('admin/partenaire', PartenaireController::class);
-    Route::resource('admin/player', PlayerController::class);
+    Route::resource('admin/players', PlayerController::class);
     Route::resource('admin/publicite', PubliciteController::class);
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);

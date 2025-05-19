@@ -15,7 +15,46 @@
     *{
      font-family: 'Merriweather', serif;
     }
+    .carousel {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      max-width: 1000px;
+    }
 
+    .arrow {
+      font-size: 2.5rem;
+      color: red;
+      cursor: pointer;
+      user-select: none;
+      padding: 0 20px;
+    }
+
+    .carousel-images {
+      display: flex;
+      overflow: hidden;
+      gap: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-image {
+      flex: 0 0 auto;
+      width: 200px;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+    }
+
+    .carousel-image.active {
+      transform: scale(1.2);
+      z-index: 2;
+}
     .btn-hover-effect {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -176,5 +215,35 @@
       offset: 100
     });
   </script>
+  <script>
+  const carouselTrack = document.getElementById('carousel-track');
+  let currentIndex = 1;
+
+  function updateCarousel() {
+    const items = document.querySelectorAll('.carousel-item');
+    items.forEach((item, index) => {
+      item.classList.remove('scale-100', 'opacity-100', 'ring-4', 'ring-[#ff5722]', 'shadow-lg');
+      item.classList.add('scale-90', 'opacity-60', 'shadow-md');
+    });
+
+    const activeItem = items[currentIndex];
+    activeItem.classList.remove('scale-90', 'opacity-60', 'shadow-md');
+    activeItem.classList.add('scale-100', 'opacity-100', 'shadow-lg', 'ring-4', 'ring-[#ff5722]');
+
+    const itemWidth = activeItem.offsetWidth + 24; // spacing
+    const scrollTo = (itemWidth * currentIndex) - (carouselTrack.offsetWidth / 2) + (itemWidth / 2);
+    carouselTrack.style.transform = `translateX(-${scrollTo}px)`;
+  }
+
+  function scrollCarousel(direction) {
+    const items = document.querySelectorAll('.carousel-item');
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = items.length - 1;
+    if (currentIndex >= items.length) currentIndex = 0;
+    updateCarousel();
+  }
+
+  window.addEventListener('load', updateCarousel);
+</script>
 </body>
 </html>
