@@ -437,69 +437,50 @@
         </div>
     </section>
 
-    <div class="w-full flex justify-center py-10 bg-white my-[60px]">
-
-        <div class="relative w-full max-w-7xl overflow-hidden">
-
-            <div class="flex justify-center mb-8" data-aos="fade-down">
-                <h2 class="text-2xl md:text-3xl font-bold border-l-4 border-orange-600 pl-4 text-center">Légendes
+    <div class="container mx-auto p-10 max-w-7xl" data-aos="fade-up">
+         <div class="flex justify-center mb-8" data-aos="fade-down">
+                <h2 class="text-2xl md:text-3xl font-bold border-l-4 border-orange-600 pl-4 text-center">Notre effectif
                 </h2>
             </div>
-            <div class="flex justify-between absolute inset-y-0 left-0 z-10 items-center">
-                <button onclick="scrollCarousel(-1)"
-                    class="bg-white shadow-md hover:bg-[#ff5722] hover:text-white text-3xl px-3 py-1 rounded-full">&#8249;</button>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" >
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/45/95/08/459508a49fff8618b5f2f62e4f62b25d.jpg" class="carousel-img">
+                    <button class="bg-green-500 px-12 py-3 text-white mt-5 ml-[120px]">AG</button>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/e8/08/fb/e808fb625ed861c4d8145eff97aa0fb8.jpg" class="carousel-img">
+                    <button class="bg-green-500 px-12 py-3 text-white mt-5 ml-[120px]">MC</button>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/89/a3/50/89a350fffe556ec4dbe37b6d74282040.jpg" class="carousel-img">
+                    <button class="bg-green-500 px-12 py-3 text-white mt-5 ml-[120px]">DG</button>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/b0/39/e5/b039e597dc82c5919fe5c446005efaec.jpg" class="carousel-img">
+                    <button class="bg-green-500 px-12 py-3 text-white mt-5 ml-[120px]">AD</button>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/36/03/29/360329ad2077529d954038af9240758d.jpg" class="carousel-img">
+                    <button class="bg-green-500 px-12 py-3 text-white mt-5 ml-[120px]">COACH</button>
+                </div>
+
             </div>
 
-            <div class="flex justify-between absolute inset-y-0 right-0 z-10 items-center">
-                <button onclick="scrollCarousel(1)"
-                    class="bg-white shadow-md hover:bg-[#ff5722] hover:text-white text-3xl px-3 py-1 rounded-full">&#8250;</button>
-            </div>
 
-
-            <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out space-x-6 px-20">
-
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/45/95/08/459508a49fff8618b5f2f62e4f62b25d.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-100 opacity-100 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/8b/2d/6c/8b2d6c59d17d98d3d098916f730f7801.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-lg ring-4 ring-[#ff5722]" />
-                </div>
-
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/4d/12/af/4d12af06ffbe7cf8764d366c3ef5eadc.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/c9/91/93/c991935bf34c4d576288a8ebfad2fe57.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/d0/bb/5e/d0bb5e8803aba759bd3a7f70e0c2761c.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/e5/b8/bf/e5b8bf551e37000959a78d6121b6c15d.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-                <div
-                    class="carousel-item flex-shrink-0 transform transition-all duration-500 ease-in-out scale-90 opacity-60 w-72 h-96">
-                    <img src="https://i.pinimg.com/736x/b1/ba/0d/b1ba0d45da2a2efcb10888bb9a5ccbaf.jpg"
-                        class="w-full h-full object-cover rounded-xl shadow-md" />
-                </div>
-            </div>
+            <div class="swiper-button-next border border-red-700 rounded-full p-8 text-white  hover-text-white hover:bg-red-700 duration-500"></div>
+            <div class="swiper-button-prev border border-red-700 rounded-full p-8 text-white hover-text-white hover:bg-red-700 duration-500"></div>
         </div>
     </div>
+  </div>
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="relative py-12">
