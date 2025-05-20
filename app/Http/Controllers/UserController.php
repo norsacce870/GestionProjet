@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Display a listing of the users.
+    // Display a listing of the users. 
     public function index()
     {
         $users = User::orderBy('created_at', 'desc')->get();
