@@ -14,6 +14,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Valeur</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Titre</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Sous-titre</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Créé le</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
                     </tr>
                 </thead>
@@ -23,7 +24,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{{ $palmares->valeur}}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{{ $palmares->titre }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{{ $palmares->sous_titre }}</td>
-
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                {{ $palmares->created_at ? $palmares->created_at->diffForHumans() : '-' }}
                             <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-4">
                                 <a href="{{ route('palmares.edit', $palmares) }}" class="text-[#EA580C] dark:text-orange-400 hover:text-gray-400 duration-500 hover:underline text-2xl"><i class="bi bi-pencil-square"></i></a>
                                 <form action="{{ route('palmares.destroy', $palmares) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce palmares ?');">
