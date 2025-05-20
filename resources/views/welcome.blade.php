@@ -237,137 +237,46 @@
   </section>
 
 
-  <section class="bg-white px-4 md:px-6 py-8 md:py-12">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold border-l-4 border-orange-600 pl-4 mb-6 md:mb-8" data-aos="fade-right">Notre Effectif</h2>
+  <div class="container mx-auto p-10 max-w-7xl" data-aos="fade-up">
 
-      <!-- Joueur principal - Responsive -->
-      <div class="flex justify-center mb-4 md:mb-8" data-aos="zoom-in">
-        <div class="text-center">
-          <img src="{{asset('19.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[80px] sm:w-[100px] border-2 border-gray-300">
-          <p class="mt-2 font-serif text-base md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
+    <div class="flex justify-center mb-8" data-aos="fade-down">
+        <h2 class="text-2xl md:text-3xl font-bold border-l-4 border-orange-600 pl-4 text-center">Notre effectif</h2>
       </div>
 
-      <hr class="my-4 md:my-6 border-t">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" >
 
-      <!-- Première ligne de joueurs - Responsive -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full mb-4 md:mb-6">
-        <!-- Joueur 1 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-          <img src="{{asset('20.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/45/95/08/459508a49fff8618b5f2f62e4f62b25d.jpg" class="carousel-img">
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/a3/af/d3/a3afd35bf1157b38bd3eb374eeacad6b.jpg" class="carousel-img">
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/83/6d/24/836d24b410cb2d7868942a0baafdbb26.jpg" class="carousel-img">
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/76/0e/f9/760ef9b48ee4b79719fb83e2fa0692ea.jpg" class="carousel-img">
+                </div>
+
+
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/28/d9/b9/28d9b93d83517ea56e99d427d389530b.jpg" class="carousel-img">
+                </div>
+
+            </div>
+
+
+            <div class="swiper-button-next border border-red-700 rounded-full p-8 text-white  hover-text-white hover:bg-red-700 duration-500"></div>
+            <div class="swiper-button-prev border border-red-700 rounded-full p-8 text-white hover-text-white hover:bg-red-700 duration-500"></div>
         </div>
-
-        <!-- Joueur 2 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{asset('21.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 3 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-          <img src="{{asset('22.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 4 avec flèche -->
-        <div class="text-center relative" data-aos="fade-up" data-aos-delay="400">
-          <img src="{{asset('23.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-          <!-- Flèche droite responsive -->
-          <div class="absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 text-white bg-orange-600 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <hr class="my-4 md:my-6 border-t">
-
-      <!-- Deuxième ligne de joueurs - Responsive -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full mb-4 md:mb-6">
-        <!-- Joueur 5 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-          <img src="{{asset('24.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 6 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{asset('25.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 7 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-          <img src="{{asset('26.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 8 avec flèche -->
-        <div class="text-center relative" data-aos="fade-up" data-aos-delay="400">
-          <img src="{{asset('27.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-          <!-- Flèche droite responsive -->
-          <div class="absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 text-white bg-orange-600 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <hr class="my-4 md:my-6 border-t">
-
-      <!-- Troisième ligne de joueurs - Responsive -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full">
-        <!-- Joueur 9 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-          <img src="{{asset('28.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 10 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{asset('29.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 11 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-          <img src="{{asset('30.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-        </div>
-
-        <!-- Joueur 12 avec flèche -->
-        <div class="text-center relative" data-aos="fade-up" data-aos-delay="400">
-          <img src="{{asset('31.png')}}" alt="YAHIA Fofana" class="mx-auto rounded-md w-[70px] sm:w-[80px] md:w-[100px] border-2 border-gray-300">
-          <p class="mt-1 md:mt-2 font-serif text-sm md:text-lg">YAHIA Fofana</p>
-          <p class="text-red-700 text-xs sm:text-sm">Gardien</p>
-          <!-- Flèche droite responsive -->
-          <div class="absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 text-white bg-orange-600 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
 
 
 
