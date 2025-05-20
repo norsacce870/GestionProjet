@@ -51,7 +51,7 @@
                                     {{ $coordonnee->user->nom ?? '-' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $coordonnee->created_at ? $coordonnee->created_at->format('d/m/Y H:i') : '-' }}
+                                    {{ $coordonnee->created_at ? $coordonnee->created_at->diffForHumans() : '-' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
 

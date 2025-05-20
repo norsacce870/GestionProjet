@@ -33,7 +33,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->prenom }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->email }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $user->created_at ? $user->created_at->format('d/m/Y H:i') : '-' }}
+                                {{ $user->created_at ? $user->created_at->diffForHumans() : '-' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
                                 <a href="{{ route('user.edit', $user) }}" class="text-blue-600 hover:underline">Modifier</a>
