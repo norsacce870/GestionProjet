@@ -76,17 +76,7 @@ Edit.blade.php:
                             <input type="number" step="0.01" name="valeur" value="{{ old('valeur', $player->valeur) }}" class="mt-1 block w-full rounded-md shadow-sm border-gray-300">
                         </div>
 
-                        <div class="col-span-1 md:col-span-2">
-                            <label for="user_id" class="block font-medium text-sm text-gray-700">Utilisateur</label>
-                            <select name="user_id" class="mt-1 block w-full rounded-md shadow-sm border-gray-300">
-                                <option value="">-- Aucun --</option>
-                                @foreach($users as $user)
-                                    <option value="{{ $user->idUser }}" {{ $player->user_id == $user->idUser ? 'selected' : '' }}>
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                    
                     </div>
 
                     <div class="mt-6 flex justify-end space-x-2">
