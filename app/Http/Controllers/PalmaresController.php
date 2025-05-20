@@ -11,8 +11,7 @@ class PalmaresController extends Controller
      */
     public function index()
 
-    {    $palmares = Palmares::all();
-        $palmares = Palmares::orderBy('created_at', 'desc')->get();
+    {   $palmares = Palmares::orderBy('created_at', 'desc')->get();
         return view('palmares.index', compact('palmares'));
     }
 
@@ -52,7 +51,8 @@ class PalmaresController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $palmares = Palmares::findOrFail($id);
+        return view('palmares.show', compact('palmares'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PalmaresController extends Controller
             'sous_titre' => 'required|string|max:255',
         ]);
 
-        
+
 
         $palmares = Palmares::findOrFail($id);
         $palmares->update($request->all());
