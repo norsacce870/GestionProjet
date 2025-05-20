@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ $galerie->nom_event }}
+            {{ $galerie->nom }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <!-- Photo de couverture -->
                     @if ($galerie->getFirstMediaUrl('photo_couv'))
                         <div class="md:w-1/3 h-full">
-                            <img src="{{ $galerie->getFirstMediaUrl('photo_couv') }}" alt="Photo de couverture de {{ $galerie->nom_event }}"
+                            <img src="{{ $galerie->getFirstMediaUrl('photo_couv') }}" alt="Photo de couverture de {{ $galerie->nom }}"
                                 class="w-full h-full object-cover rounded-t-md md:rounded-l-md md:rounded-tr-none">
                         </div>
                     @endif
@@ -20,7 +20,7 @@
                     <!-- Infos -->
                     <div class="p-6 md:w-2/3">
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
-                            {{ $galerie->nom_event }}
+                            {{ $galerie->nom }}
                         </h3>
 
                         <p class="text-gray-700 dark:text-gray-200 leading-relaxed">

@@ -14,10 +14,8 @@ class Galerie extends Model implements HasMedia
     use InteractsWithMedia;
 
      protected $fillable = [
-        'nom_event',
+        'nom',
         'description_event',
-        'photo_couv',
-        'photos',
         'user_id',
     ];
 

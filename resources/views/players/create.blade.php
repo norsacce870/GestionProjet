@@ -77,15 +77,6 @@ Create.blade.php:
                         <input type="number" step="0.01" name="valeur" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="{{ old('valeur') }}">
                     </div>
 
-                    <div>
-                        <label for="user_id" class="block font-medium text-sm text-gray-700">Utilisateur</label>
-                        <select name="user_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-                            <option value="">-- Aucun --</option>
-                            @foreach($users as $user)
-                                <option value="{{ $user->idUser }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="flex justify-end space-x-4">
                         <button type="submit"
