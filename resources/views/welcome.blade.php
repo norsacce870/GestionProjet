@@ -370,16 +370,57 @@
           <!-- Navigation rapide -->
           <div class="mb-6 md:mb-0">
             <h3 class="text-xl font-semibold mb-4">Liens Rapides</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Accueil</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Evenements</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Pratiquer</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Contact</span>
+            </div>
           </div>
 
           <!-- Partenaires -->
           <div class="mb-6 md:mb-0">
             <h3 class="text-xl font-semibold mb-4">Partenaires</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Puma</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Gestoci</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">RTI</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">FIFA</span>
+            </div>
+
           </div>
 
-          <!-- Contact -->
           <div>
             <h3 class="text-xl font-semibold mb-4">Contact</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">>fifci@aviso.ci</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">+225 21 24 00 27</span>
+            </div>
+
           </div>
         </div>
 
@@ -409,13 +450,14 @@
         </div>
       </div>
     </div>
-
-    <div class="flex">
-      <div class="w-1/2 h-2 bg-orange-600"></div>
-      <div class="w-1/2 h-2 bg-white"></div>
-      <div class="w-1/2 h-2 bg-green-600"></div>
+  </footer><br><br>
+<section>
+    <div class="flex w-full">
+      <div class="w-1/3 h-14 bg-orange-600"></div>
+      <div class="w-1/3 h-14 bg-white"></div>
+      <div class="w-1/3 h-14 bg-green-600"></div>
     </div>
-  </footer>
+</section>
 
 
 @endsection
