@@ -14,8 +14,8 @@
                 <!-- Navigation Links -->
                 <div class="hidden gap-3 sm:flex sm:items-center sm:space-x-6 ms-10" x-data="{ openMedia: false, openUsers: false, openCom: false, openInfo: false, openRelations: false }">
 
-                    <div class="relative text-sm font-medium text-white mt-2">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <div class="relative text-sm font-medium  mt-2">
+                        <x-nav-link :href="route('dashboard')" class="text-white" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
@@ -41,17 +41,17 @@
                         </div>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white mt-2"
+                    <div class="relative text-sm font-medium  mt-2"
                         @click.away="openUsers = false">
-                        <x-nav-link :href="route('players.index')" :active="request()->routeIs('players.index')"
+                        <x-nav-link :href="route('players.index')" class="text-white" :active="request()->routeIs('players.index')"
                             class="block px-4 py-2 mt-2 text-sm ">
                             {{ __('Players') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white mt-2"
+                    <div class="relative text-sm font-medium  mt-2"
                         @click.away="openUsers = false">
-                        <x-nav-link :href="route('palmares.index')" :active="request()->routeIs('palmares.index')">
+                        <x-nav-link :href="route('palmares.index')" class="text-white" :active="request()->routeIs('palmares.index')">
                             {{ __('Palmarès') }}
                         </x-nav-link>
                     </div>
