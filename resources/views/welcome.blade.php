@@ -11,68 +11,103 @@
   </section>
 
   <!-- Carousel avec animation de fondu -->
-  <section data-aos="fade-up" data-aos-delay="200">
-    <div class="max-w-7xl mx-auto" data-carousel="slide">
-        <div class="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg">
-            <!-- Active slide -->
-            <div class="duration-700 ease-in-out" data-carousel-item="active">
-                <img src="{{ asset('d34c457cdb99b282b390480e7f183b9f377c0d21.png') }}"
-                    class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                    alt="Équipe nationale de football de Côte d'Ivoire">
-                <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
-                <div class="absolute z-20 bottom-10 md:bottom-20 left-4 md:left-10 text-white max-w-xl px-2 md:px-0">
-                    <div class="border-l-4 border-orange-600 pl-4">
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2">UNE NOUVELLE ETOILE</h2>
-                        <p class="text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Other slides -->
-            @for ($i = 1; $i <= 4; $i++)
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="{{ asset('d34c457cdb99b282b390480e7f183b9f377c0d21.png') }}"
-                        class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                        alt="Carousel image {{ $i }}">
-                </div>
-            @endfor
-
-            <!-- Indicators -->
-            <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-                @for ($i = 0; $i < 5; $i++)
-                    <button type="button"
-                        class="w-2 h-2 md:w-3 md:h-3 rounded-full {{ $i === 0 ? 'bg-white' : 'bg-white/50' }}"
-                        aria-current="{{ $i === 0 ? 'true' : 'false' }}"
-                        aria-label="Slide {{ $i + 1 }}"
-                        data-carousel-slide-to="{{ $i }}">
-                    </button>
-                @endfor
-            </div>
-
-            <!-- Controls -->
-            <button type="button"
-                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-2 md:px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 group-hover:bg-white/50 transition-all duration-300">
-                    <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button"
-                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-2 md:px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next>
-                <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 group-hover:bg-white/50 transition-all duration-300">
-                    <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
+<section data-aos="fade-up" data-aos-delay="200">
+  <div class="max-w-7xl mx-auto" data-carousel="slide">
+    <div class="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg">
+      <!-- Active slide -->
+      <div class="duration-700 ease-in-out" data-carousel-item="active">
+        <img src="{{ asset('rectangle.png') }}"
+          class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          alt="Équipe nationale de football de Côte d'Ivoire">
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div class="absolute z-20 bottom-10 md:bottom-20 left-4 md:left-10 text-white max-w-xl px-2 md:px-0">
+          <div class="border-l-4 border-orange-600 pl-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2">UNE NOUVELLE ETOILE</h2>
+            <p class="text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="{{ asset('ENTETE.png') }}"
+          class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          alt="Carousel image 1">
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div class="absolute z-20 bottom-10 md:bottom-20 left-4 md:left-10 text-white max-w-xl px-2 md:px-0">
+          <div class="border-l-4 border-orange-600 pl-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2">Titre du Slide 1</h2>
+            <p class="text-sm md:text-base">Description pour le slide 1...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="{{ asset('Rectangle 2 .png') }}"
+          class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          alt="Carousel image 2">
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div class="absolute z-20 bottom-10 md:bottom-20 left-4 md:left-10 text-white max-w-xl px-2 md:px-0">
+          <div class="border-l-4 border-orange-600 pl-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2">Titre du Slide 2</h2>
+            <p class="text-sm md:text-base">Description pour le slide 2...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="{{ asset('ENTETE (1).png') }}"
+          class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          alt="Carousel image 3">
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div class="absolute z-20 bottom-10 md:bottom-20 left-4 md:left-10 text-white max-w-xl px-2 md:px-0">
+          <div class="border-l-4 border-orange-600 pl-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2">Titre du Slide 3</h2>
+            <p class="text-sm md:text-base">Description pour le slide 3...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+        @for ($i = 0; $i < 4; $i++)
+          <button type="button"
+            class="w-2 h-2 md:w-3 md:h-3 rounded-full {{ $i === 0 ? 'bg-white' : 'bg-white/50' }}"
+            aria-current="{{ $i === 0 ? 'true' : 'false' }}"
+            aria-label="Slide {{ $i + 1 }}"
+            data-carousel-slide-to="{{ $i }}">
+          </button>
+        @endfor
+      </div>
+
+      <!-- Controls -->
+      <button type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-2 md:px-4 cursor-pointer group focus:outline-none"
+        data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 group-hover:bg-white/50 transition-all duration-300">
+          <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span class="sr-only">Previous</span>
+        </span>
+      </button>
+      <button type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-2 md:px-4 cursor-pointer group focus:outline-none"
+        data-carousel-next>
+        <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 group-hover:bg-white/50 transition-all duration-300">
+          <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="sr-only">Next</span>
+        </span>
+      </button>
     </div>
-  </section>
+  </div>
+</section>
+
+
 
   <section class="bg-white px-4 md:px-6 py-8 md:py-12">
     <div class="max-w-7xl mx-auto">
@@ -138,36 +173,47 @@
           </div>
         </div>
 
-        <!-- Colonne latérale Actualités avec animation -->
-        <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-6 rounded-lg shadow-lg h-auto lg:h-[900px] mt-6 lg:mt-0" data-aos="fade-left" data-aos-delay="500">
-            <h3 class="text-lg md:text-xl font-semibold border-b-2 border-orange-600 pb-2 mb-4 text-gray-800">Actualités</h3>
-            <ul class="space-y-3 text-gray-700 text-sm md:text-base">
-              <li>
-                <a href="#" class="flex items-center text-inherit hover:text-orange-600 transition-colors duration-200 group">
-                  <svg class="w-4 h-4 mr-2 text-orange-500 group-hover:text-orange-600 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  Coupe d'Afrique 2025
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center text-inherit hover:text-orange-600 transition-colors duration-200 group">
-                  <svg class="w-4 h-4 mr-2 text-orange-500 group-hover:text-orange-600 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  Retour des Champions
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center text-inherit hover:text-orange-600 transition-colors duration-200 group">
-                  <svg class="w-4 h-4 mr-2 text-orange-500 group-hover:text-orange-600 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  Formation U17
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center text-inherit hover:text-orange-600 transition-colors duration-200 group">
-                  <svg class="w-4 h-4 mr-2 text-orange-500 group-hover:text-orange-600 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  Conférence FIFA
-                </a>
-              </li>
-            </ul>
-        </div>
+        <!-- Colonne latérale Actualités avec animation adaptée à la maquette -->
+<div class="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-6 rounded-lg shadow-lg h-auto lg:h-[900px] mt-6 lg:mt-0" data-aos="fade-left" data-aos-delay="500">
+  <h3 class="text-xl font-bold border-b-2 border-orange-600 pb-2 mb-6 text-gray-800">Actualités</h3>
+
+  <!-- Liste des actualités -->
+  <ul class="space-y-16">
+    <li class="flex items-center justify-between">
+      <div class="text-sm font-medium text-gray-800 max-w-[70%]">
+        Lorem Ipsum is simply dummy
+      </div>
+      <img src="{{ asset('a.png') }}" alt="Actu 1" class="w-20 h-20 object-cover rounded-md shadow">
+    </li>
+    <li class="flex items-center justify-between">
+      <div class="text-sm font-medium text-gray-800 max-w-[70%]">
+        Lorem Ipsum is simply dummy
+      </div>
+      <img src="{{ asset('b.png') }}" alt="Actu 2" class="w-20 h-20 object-cover rounded-md shadow">
+    </li>
+    <li class="flex items-center justify-between">
+      <div class="text-sm font-medium text-gray-800 max-w-[70%]">
+        Lorem Ipsum is simply dummy
+      </div>
+      <img src="{{ asset('c.png') }}"alt="Actu 3" class="w-20 h-20 object-cover rounded-md shadow">
+    </li>
+    <li class="flex items-center justify-between">
+      <div class="text-sm font-medium text-gray-800 max-w-[70%]">
+        Lorem Ipsum is simply dummy
+      </div>
+      <img src="{{ asset('d.png') }}"alt="Actu 4" class="w-20 h-20 object-cover rounded-md shadow">
+    </li>
+  </ul>
+
+  <h3 class="text-xl font-bold border-b-2 border-orange-600 pb-2 mb-6 mt-20 text-gray-800">Actualités</h3>
+  <!-- Bouton en bas -->
+  <div class="mt-8 text-center">
+    <a href="#" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 text-sm rounded shadow transition">
+      Voir Toutes les Actualités
+    </a>
+  </div>
+</div>
+
       </div>
     </div>
   </section>
@@ -323,6 +369,8 @@
     </div>
   </section>
 
+
+
   <!-- Section "Contactez Nous" avec animation -->
   <section class="bg-white px-4 md:px-6 py-8 md:py-12">
     <div class="max-w-7xl mx-auto">
@@ -359,6 +407,46 @@
       </div>
     </div>
   </section>
+
+<section class="bg-cover bg-center text-white py-12 px-6 md:px-20" style="background-image: url('14.png');">
+  <h2 class="text-3xl md:text-4xl font-bold mb-8 border-l-4 border-orange-500 pl-4 backdrop-blur-sm bg-green-900/40 inline-block">
+    Retrouvez Nos Meilleurs Moments
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Vidéo 1 -->
+    <div class="relative">
+      <img src="https://img.youtube.com/vi/VIDEO_ID1/hqdefault.jpg" alt="Vidéo 1" class="w-full h-auto rounded shadow-md">
+      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">4:20</span>
+    </div>
+
+    <!-- Vidéo 2 -->
+    <div class="relative">
+      <img src="https://img.youtube.com/vi/VIDEO_ID2/hqdefault.jpg" alt="Vidéo 2" class="w-full h-auto rounded shadow-md">
+      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">5:55</span>
+    </div>
+
+    <!-- Vidéo 3 -->
+    <div class="relative">
+      <img src="https://img.youtube.com/vi/VIDEO_ID3/hqdefault.jpg" alt="Vidéo 3" class="w-full h-auto rounded shadow-md">
+    </div>
+  </div>
+</section>
+
+  <section class="bg-white py-12 px-6">
+  <h2 class="text-2xl font-bold text-gray-800">
+    <span class="border-l-4 border-orange-600 pl-4">Nos Partenaires</span>
+  </h2>
+
+  <div class="mt-8 flex flex-wrap justify-around items-center gap-6">
+    <img src="1.png" alt="FIFA" class="h-20" />
+    <img src="2.png" alt="CAF" class="h-20" />
+    <img src="3.png" alt="Puma" class="h-20" />
+    <img src="4.png" alt="@bidjan.net" class="h-20" />
+    <img src="5.png" alt="Canal+" class="h-20" />
+  </div>
+</section>
+
   <!-- Footer -->
   <footer class="bg-gray-800 text-white">
     <div class="relative py-12">
@@ -419,4 +507,6 @@
       <div class="w-1/2 h-2 bg-green-600"></div>
     </div>
   </footer>
+
+
 @endsection
