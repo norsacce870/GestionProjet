@@ -25,7 +25,7 @@
                             class="text-sm font-medium mt-3.5 text-white">
                             Contenus
                         </button>
-                        <div x-show="openMedia" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
+                        <div x-show="openMedia" class="absolute mt-2 w-40  rounded shadow-md z-50">
                             <x-nav-link :href="route('actualite.index')" :active="request()->routeIs('actualite.index')"
                                 class="block px-4 py-2 text-sm hover:bg-gray-100">
                                 {{ __('Actualités') }}
