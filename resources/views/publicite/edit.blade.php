@@ -1,22 +1,71 @@
-@extends('layouts.app')
+<x-app-layout>
+    <div class="min-h-screen bg-gray-100 py-10">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">Modifier une Publicité</h2>
 
-@section('content')
-<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-    <h1 class="text-2xl font-bold mb-4">Modifier la Publicité</h1>
-    <form action="{{ route('publicite.update', $publicite) }}" method="POST">
-        @csrf
-        @method('PUT')
+            <!-- Message de succès -->
+            @if(session('success'))
+                <div class="mb-6 p-4 bg-green-100 text-green-700 rounded-lg shadow-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        <!-- Nom -->
-        <label class="block font-semibold">Nom :</label>
-        <input type="text" name="nom" value="{{ $publicite->nom }}" class="w-full border p-2 rounded-md" required>
+            <div class="bg-white rounded-2xl shadow-md p-8">
+                <form action="{{ route('publicite.update', $publicite) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    @csrf
+                    @method('PUT')
 
-        <!-- Description -->
-        <label class="block font-semibold mt-4">Description :</label>
-        <textarea name="description" class="w-full border p-2 rounded-md">{{ $publicite->description }}</textarea>
+                    <!-- Nom -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nom <span class="text-red-500">*</span></label>
+                        <input type="text" name="nom" value="{{ old('nom', $publicite->nom) }}"
+                            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        @error('nom')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-        <!-- Bouton de soumission -->
-        <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded-md mt-4">Mettre à jour</button>
-    </form>
-</div>
-@endsection
+                    <!-- Description -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea name="description" rows="4"
+                            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('description', $publicite->description) }}</textarea>
+                        @error('description')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Image actuelle -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Image actuelle</label>
+                        @if($publicite->hasMedia('image'))
+                           <img src="{{ $publicite->getFirstMediaUrl('image', 'small') }}"
+                             alt="Image actuelle" class="w-32 h-32 object-cover rounded-md mb-2">
+                        @else
+                            <p class="text-gray-500">Aucune image</p>
+                        @endif
+                    </div>
+
+                    <!-- Nouvelle Image -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Changer l’image</label>
+                        <input type="file" name="image"
+                               class="w-full border border-gray-300 rounded-lg px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition duration-150 ease-in-out"
+                               accept="image/*">
+                        @error('image')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Bouton de soumission -->
+                    <div class="text-right">
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-2 rounded-lg shadow transition duration-200">
+                            Mettre à jour
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
