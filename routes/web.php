@@ -36,12 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/publicite', PubliciteController::class);
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
-<<<<<<< HEAD
+
     Route::resource('admin/palmares', PalmaresController::class);
-    
-=======
-    Route::resource('admin/palmares', PalmaresController::class); 
->>>>>>> 34934da (Sauvegarde avant pull)
 
 
 
