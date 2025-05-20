@@ -13,7 +13,7 @@ class PubliciteController extends Controller
      */
     public function index()
     {
-        $publicites = Publicite::where('user_id', Auth::id())->get();
+        $publicites = Publicite::orderBy('created_at', 'desc')->get();
         return view('publicite.index', compact('publicites'));
     }
 
@@ -30,60 +30,84 @@ class PubliciteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
             'lien' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        Publicite::create([
-            'nom' => $request->nom,
-            'description' => $request->description,
-            'lien' => $request->lien,
-            //'user_id' => Auth::id(),
+        $publicite = Publicite::create([
+            'nom' => $validated['nom'],
+            'description' => $validated['description'],
+            'lien' => $validated['lien'] ?? null,
+            'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('publicite.index')->with('success', 'Publicité ajoutée avec succès !');
+        // Vérification et stockage de l'image
+        if ($request->hasFile('image')) {
+            $publicite->addMediaFromRequest('image')->toMediaCollection('image');
+        }
+
+        // Vérification post-enregistrement
+        $mediaCount = $publicite->getMedia('image')->count();
+        if ($mediaCount === 0) {
+            return back()->withErrors(['image' => 'L’image n’a pas été enregistrée correctement.']);
+        }
+
+        return redirect()->route('publicite.index')->with('success', 'Publicité ajoutée avec succès.');
     }
 
     /**
      * Affiche une publicité spécifique.
      */
-    public function show(Publicite $publicite)
+    public function show($id)
     {
+        $publicite = Publicite::findOrFail($id);
         return view('publicite.show', compact('publicite'));
     }
 
     /**
      * Affiche le formulaire d'édition.
      */
-    public function edit(Publicite $publicite)
+    public function edit($id)
     {
+        $publicite = Publicite::findOrFail($id);
         return view('publicite.edit', compact('publicite'));
     }
 
     /**
      * Met à jour une publicité.
      */
-    public function update(Request $request, Publicite $publicite)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $publicite = Publicite::findOrFail($id);
+
+        $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
             'lien' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        $publicite->update($request->all());
+        $publicite->update($validated);
 
-        return redirect()->route('publicite.index')->with('success', 'Publicité mise à jour avec succès !');
+        if ($request->hasFile('image')) {
+            $publicite->clearMediaCollection('image'); // Supprime l'ancienne image
+            $publicite->addMediaFromRequest('image')->toMediaCollection('image');
+        }
+
+        return redirect()->route('publicite.index')->with('success', 'Publicité mise à jour avec succès.');
     }
 
     /**
      * Supprime une publicité.
      */
-    public function destroy(Publicite $publicite)
+    public function destroy($id)
     {
+        $publicite = Publicite::findOrFail($id);
         $publicite->delete();
-        return redirect()->route('publicite.index')->with('success', 'Publicité supprimée avec succès !');
+
+        return redirect()->route('publicite.index')->with('success', 'Publicité supprimée avec succès.');
     }
 }
