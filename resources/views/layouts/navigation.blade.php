@@ -14,8 +14,8 @@
                 <!-- Navigation Links -->
                 <div class="hidden gap-3 sm:flex sm:items-center sm:space-x-6 ms-10" x-data="{ openMedia: false, openUsers: false, openCom: false, openInfo: false, openRelations: false }">
 
-                    <div class="relative text-sm font-medium text-white mt-2">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <div class="relative text-sm font-medium  mt-2">
+                        <x-nav-link :href="route('dashboard')" class="text-white" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
@@ -25,33 +25,33 @@
                             class="text-sm font-medium mt-3.5 text-white">
                             Contenus
                         </button>
-                        <div x-show="openMedia" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
+                        <div x-show="openMedia" class="absolute mt-2 w-40  bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('actualite.index')" :active="request()->routeIs('actualite.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black ">
                                 {{ __('Actualités') }}
                             </x-nav-link>
                             <x-nav-link :href="route('galerie.index')" :active="request()->routeIs('galerie.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Galerie') }}
                             </x-nav-link>
                             <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Vidéos') }}
                             </x-nav-link>
                         </div>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white mt-2"
+                    <div class="relative text-sm font-medium  mt-2"
                         @click.away="openUsers = false">
-                        <x-nav-link :href="route('players.index')" :active="request()->routeIs('players.index')"
+                        <x-nav-link :href="route('players.index')" class="text-white" :active="request()->routeIs('players.index')"
                             class="block px-4 py-2 mt-2 text-sm ">
                             {{ __('Players') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white mt-2"
+                    <div class="relative text-sm font-medium  mt-2"
                         @click.away="openUsers = false">
-                        <x-nav-link :href="route('palmares.index')" :active="request()->routeIs('palmares.index')">
+                        <x-nav-link :href="route('palmares.index')" class="text-white" :active="request()->routeIs('palmares.index')">
                             {{ __('Palmarès') }}
                         </x-nav-link>
                     </div>
@@ -65,11 +65,11 @@
                         </button>
                         <div x-show="openRelations" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('publicite.index')" :active="request()->routeIs('publicite.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Publicités') }}
                             </x-nav-link>
                             <x-nav-link :href="route('partenaire.index')" :active="request()->routeIs('partenaire.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Partenaires') }}
                             </x-nav-link>
                         </div>
@@ -83,11 +83,11 @@
                         </button>
                         <div x-show="openInfo" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('coordonnee.index')" :active="request()->routeIs('coordonnee.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Coordonnées') }}
                             </x-nav-link>
                             <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Contacts') }}
                             </x-nav-link>
                         </div>

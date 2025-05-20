@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
@@ -42,10 +42,22 @@ class PlayerController extends Controller
             'club' => 'nullable|string',
             'valeur' => 'nullable|numeric',
             'fin_contrat_at' => 'nullable|date',
-            'user_id' => 'nullable|exists:users,idUser',
+
         ]);
 
-        Player::create($validated);
+        Player::create([
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'poste' => $validated['poste'],
+            'numero' => $validated['numero'],
+            'naissance_at' => $validated['naissance_at'],
+            'poids' => $validated['poids'],
+            'taille' => $validated['taille'],
+            'club' => $validated['club'],
+            'valeur' => $validated['valeur'],
+            'fin_contrat_at' => $validated['fin_contrat_at'],
+            'user_id' => Auth::id(),
+        ]);
 
         return redirect()->route('players.index')->with('success', 'Joueur créé avec succès.');
     }

@@ -247,27 +247,27 @@
             <div class="swiper-wrapper" >
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/45/95/08/459508a49fff8618b5f2f62e4f62b25d.jpg" class="carousel-img">
+                    <img src="{{asset('doue.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/a3/af/d3/a3afd35bf1157b38bd3eb374eeacad6b.jpg" class="carousel-img">
+                    <img src="{{asset('kessie.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/83/6d/24/836d24b410cb2d7868942a0baafdbb26.jpg" class="carousel-img">
+                    <img src="{{asset('simon.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/76/0e/f9/760ef9b48ee4b79719fb83e2fa0692ea.jpg" class="carousel-img">
+                    <img src="{{asset('fae.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/28/d9/b9/28d9b93d83517ea56e99d427d389530b.jpg" class="carousel-img">
+                    <img src="{{asset('yaya.png')}}" class="carousel-img">
                 </div>
 
             </div>
