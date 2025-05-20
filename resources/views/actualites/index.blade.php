@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Liste des actualités</h2>
-    <a href="{{ route('actualites.create') }}" class="btn btn-success mb-3">Ajouter une actualité</a>
+    <a href="{{ route('actualite.create') }}" class="btn btn-success mb-3">Ajouter une actualité</a>
 
     <table class="table table-bordered">
         <thead>
@@ -21,8 +21,8 @@
                     <td>{{ $actu->auteur }}</td>
                     <td>{{ $actu->contenu }}</td>
                     <td>
-                        <a href="{{ route('actualites.edit', $actu->id) }}" class="btn btn-primary btn-sm">Modifier</a>
-                        <form action="{{ route('actualites.destroy', $actu->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Confirmer la suppression ?');">
+                        <a href="{{ route('actualite.edit', $actu->id) }}" class="btn btn-primary btn-sm">Modifier</a>
+                        <form action="{{ route('actualite.destroy', $actu->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Confirmer la suppression ?');">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm">Supprimer</button>
