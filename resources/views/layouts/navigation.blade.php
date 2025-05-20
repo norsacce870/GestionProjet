@@ -25,17 +25,17 @@
                             class="text-sm font-medium mt-3.5 text-white">
                             Contenus
                         </button>
-                        <div x-show="openMedia" class="absolute mt-2 w-40  rounded shadow-md z-50">
+                        <div x-show="openMedia" class="absolute mt-2 w-40  bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('actualite.index')" :active="request()->routeIs('actualite.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black ">
                                 {{ __('Actualités') }}
                             </x-nav-link>
                             <x-nav-link :href="route('galerie.index')" :active="request()->routeIs('galerie.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Galerie') }}
                             </x-nav-link>
                             <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Vidéos') }}
                             </x-nav-link>
                         </div>
@@ -65,11 +65,11 @@
                         </button>
                         <div x-show="openRelations" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('publicite.index')" :active="request()->routeIs('publicite.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Publicités') }}
                             </x-nav-link>
                             <x-nav-link :href="route('partenaire.index')" :active="request()->routeIs('partenaire.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Partenaires') }}
                             </x-nav-link>
                         </div>
@@ -83,11 +83,11 @@
                         </button>
                         <div x-show="openInfo" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
                             <x-nav-link :href="route('coordonnee.index')" :active="request()->routeIs('coordonnee.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Coordonnées') }}
                             </x-nav-link>
                             <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                class="block px-4 py-2 text-sm text-black">
                                 {{ __('Contacts') }}
                             </x-nav-link>
                         </div>
