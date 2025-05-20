@@ -40,7 +40,7 @@ public function store(Request $request)
     public function show($id)
     {
         $coordonnee = Coordonnee::findOrFail($id);
-        return redirect()->route('coordonnee.show', $coordonnee->id);
+        return view('coordonnee.show', compact('coordonnee'));
     }
     public function edit($id)
 {
@@ -49,19 +49,19 @@ public function store(Request $request)
 }
 
     // Update the specified resource in storage.
-   public function update(Request $request, $id)
+ public function update(Request $request, $id)
 {
     $coordonnee = Coordonnee::findOrFail($id);
 
     $validated = $request->validate([
         'nom' => 'nullable|string|max:255',
-        'icone' => 'nullable|string|max:255', // Accept icon class name
+        'icone' => 'nullable|string|max:255',
     ]);
 
     $validated['user_id'] = Auth::id();
 
     $coordonnee->update($validated);
-    return redirect()->route('coordonnee.show', $coordonnee->id);
+    return redirect()->route('coordonnee.index')->with('success', 'Coordonnée mise à jour avec succès.');
 }
 
     // Remove the specified resource from storage.

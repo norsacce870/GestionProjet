@@ -1,10 +1,6 @@
 {{-- filepath: c:\Users\H P\Desktop\gestion projet\GestionProjet\resources\views\coordonnee\create.blade.php --}}
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Ajout d\'une coordonnée') }}
-        </h2>
-    </x-slot>
+
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-8">
     <div class="w-full max-w-lg">
         <div class="bg-white shadow-lg rounded-lg p-8">

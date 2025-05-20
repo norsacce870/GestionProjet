@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Ajout d\'un utilisateur') }}
-        </h2>
-    </x-slot>
+
     <div class="flex items-center justify-center min-h-screen py-8 bg-gray-100">
         <div class="w-full max-w-lg">
             <div class="p-8 bg-white rounded-lg shadow-lg">
