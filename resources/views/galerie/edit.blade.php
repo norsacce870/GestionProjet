@@ -14,10 +14,10 @@
 
                     <!-- Nom de l'évènement -->
                     <div class="mb-4">
-                        <label for="nom_event" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom de l'évènement</label>
-                        <input type="text" name="nom_event" id="nom_event" value="{{ old('nom_event', $galerie->nom_event) }}" required
+                        <label for="nom" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom de l'évènement</label>
+                        <input type="text" name="nom" id="nom" value="{{ old('nom', $galerie->nom) }}" required
                                class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 dark:bg-gray-900 dark:text-white" />
-                        @error('nom_event')
+                        @error('nom')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>

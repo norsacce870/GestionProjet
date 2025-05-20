@@ -247,27 +247,27 @@
             <div class="swiper-wrapper" >
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/45/95/08/459508a49fff8618b5f2f62e4f62b25d.jpg" class="carousel-img">
+                    <img src="{{asset('doue.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/a3/af/d3/a3afd35bf1157b38bd3eb374eeacad6b.jpg" class="carousel-img">
+                    <img src="{{asset('kessie.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/83/6d/24/836d24b410cb2d7868942a0baafdbb26.jpg" class="carousel-img">
+                    <img src="{{asset('simon.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/76/0e/f9/760ef9b48ee4b79719fb83e2fa0692ea.jpg" class="carousel-img">
+                    <img src="{{asset('fae.png')}}" class="carousel-img">
                 </div>
 
 
                 <div class="swiper-slide">
-                    <img src="https://i.pinimg.com/736x/28/d9/b9/28d9b93d83517ea56e99d427d389530b.jpg" class="carousel-img">
+                    <img src="{{asset('yaya.png')}}" class="carousel-img">
                 </div>
 
             </div>
@@ -277,7 +277,6 @@
             <div class="swiper-button-prev border border-red-700 rounded-full p-8 text-white hover-text-white hover:bg-red-700 duration-500"></div>
         </div>
     </div>
-
 
 
   <!-- Section "Contactez Nous" avec animation -->
@@ -324,22 +323,20 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     <!-- Vidéo 1 -->
-    <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID1/hqdefault.jpg" alt="Vidéo 1" class="w-full h-auto rounded shadow-md">
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">4:20</span>
-    </div>
+     <div class="relative">
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=MQQsyuH0cOg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
+
 
     <!-- Vidéo 2 -->
     <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID2/hqdefault.jpg" alt="Vidéo 2" class="w-full h-auto rounded shadow-md">
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">5:55</span>
-    </div>
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=SldWlrg8ogo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
 
     <!-- Vidéo 3 -->
     <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID3/hqdefault.jpg" alt="Vidéo 3" class="w-full h-auto rounded shadow-md">
-    </div>
-  </div>
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=uUOZWmhs4EE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
 </section>
 
   <section class="bg-white py-12 px-6">
@@ -348,11 +345,11 @@
   </h2>
 
   <div class="mt-8 flex flex-wrap justify-around items-center gap-6">
-    <img src="1.png" alt="FIFA" class="h-20" />
-    <img src="2.png" alt="CAF" class="h-20" />
+    <img src="FIFA-removebg-preview.png" alt="FIFA" class="h-20" />
+    <img src="CAF-removebg-preview.png" alt="CAF" class="h-20" />
     <img src="3.png" alt="Puma" class="h-20" />
-    <img src="4.png" alt="@bidjan.net" class="h-20" />
-    <img src="5.png" alt="Canal+" class="h-20" />
+    <img src="abidjan-net-removebg-preview.png" alt="@bidjan.net" class="h-20" />
+    <img src="CANAL-removebg-preview.png" alt="Canal+" class="h-20" />
   </div>
 </section>
 
@@ -370,16 +367,57 @@
           <!-- Navigation rapide -->
           <div class="mb-6 md:mb-0">
             <h3 class="text-xl font-semibold mb-4">Liens Rapides</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Accueil</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Evenements</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Pratiquer</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Contact</span>
+            </div>
           </div>
 
           <!-- Partenaires -->
           <div class="mb-6 md:mb-0">
             <h3 class="text-xl font-semibold mb-4">Partenaires</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Puma</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">Gestoci</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">RTI</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">FIFA</span>
+            </div>
+
           </div>
 
-          <!-- Contact -->
           <div>
             <h3 class="text-xl font-semibold mb-4">Contact</h3>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">>fifci@aviso.ci</span>
+            </div>
+            <div class="font-semibold">
+             <span class="text-orange-600">&gt;</span>
+             <span class="text-white">+225 21 24 00 27</span>
+            </div>
+
           </div>
         </div>
 
@@ -409,13 +447,14 @@
         </div>
       </div>
     </div>
-
-    <div class="flex">
-      <div class="w-1/2 h-2 bg-orange-600"></div>
-      <div class="w-1/2 h-2 bg-white"></div>
-      <div class="w-1/2 h-2 bg-green-600"></div>
+  </footer><br><br>
+<section>
+    <div class="flex w-full">
+      <div class="w-1/3 h-14 bg-orange-600"></div>
+      <div class="w-1/3 h-14 bg-white"></div>
+      <div class="w-1/3 h-14 bg-green-600"></div>
     </div>
-  </footer>
+</section>
 
 
 @endsection
