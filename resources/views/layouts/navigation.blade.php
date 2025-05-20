@@ -14,7 +14,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden gap-3 sm:flex sm:items-center sm:space-x-6 ms-10" x-data="{ openMedia: false, openUsers: false, openCom: false, openInfo: false, openRelations: false }">
 
-                    <div class="relative text-sm font-medium text-white hover:text-blue-600 mt-2">
+                    <div class="relative text-sm font-medium text-white mt-2">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
@@ -22,7 +22,7 @@
 
                     <div class="relative" @click.away="openMedia = false">
                         <button @click="openMedia = !openMedia"
-                            class="text-sm font-medium mt-3.5 text-white hover:text-blue-600">
+                            class="text-sm font-medium mt-3.5 text-white">
                             Contenus
                         </button>
                         <div x-show="openMedia" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
@@ -41,15 +41,15 @@
                         </div>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white hover:text-blue-600 mt-2"
+                    <div class="relative text-sm font-medium text-white mt-2"
                         @click.away="openUsers = false">
                         <x-nav-link :href="route('players.index')" :active="request()->routeIs('players.index')"
-                            class="block px-4 py-2 mt-2 text-sm hover:bg-gray-100">
+                            class="block px-4 py-2 mt-2 text-sm ">
                             {{ __('Players') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="relative text-sm font-medium text-white hover:text-blue-600 mt-2"
+                    <div class="relative text-sm font-medium text-white mt-2"
                         @click.away="openUsers = false">
                         <x-nav-link :href="route('palmares.index')" :active="request()->routeIs('palmares.index')">
                             {{ __('Palmarès') }}
@@ -60,7 +60,7 @@
 
                     <div class="relative" @click.away="openRelations = false">
                         <button @click="openRelations = !openRelations"
-                            class="text-sm font-medium text-white hover:text-blue-600 mt-3.5">
+                            class="text-sm font-medium text-white mt-3.5">
                             Relations
                         </button>
                         <div x-show="openRelations" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
@@ -78,7 +78,7 @@
 
                     <div class="relative" @click.away="openInfo = false">
                         <button @click="openInfo = !openInfo"
-                            class="text-sm font-medium text-white hover:text-blue-600 mt-3.5">
+                            class="text-sm font-medium text-white mt-3.5">
                             Communication
                         </button>
                         <div x-show="openInfo" class="absolute mt-2 w-40 bg-white rounded shadow-md z-50">
