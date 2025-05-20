@@ -36,12 +36,13 @@
                                 {{ $user->created_at ? $user->created_at->format('d/m/Y H:i') : '-' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
-                                <a href="{{ route('user.edit', $user) }}" class="text-blue-600 hover:underline">Éditer</a>
+                                <a href="{{ route('user.edit', $user) }}" class="text-blue-600 hover:underline">Modifier</a>
                                 <form action="{{ route('user.destroy', $user) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline ml-2">Supprimer</button>
                                 </form>
+                                 <a href="{{ route('user.show', $user) }}" class="text-green-600 hover:underline">Afficher</a>
                             </td>
                         </tr>
                     @empty

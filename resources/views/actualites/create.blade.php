@@ -4,7 +4,7 @@
 <div class="container">
     <h2>Ajouter une actualité</h2>
 
-    <form action="{{ route('actualites.store') }}" method="POST">
+    <form action="{{ route('actualite.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label>Nom</label>

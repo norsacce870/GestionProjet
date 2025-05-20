@@ -4,7 +4,7 @@
 <div class="container">
     <h2>Modifier l'actualité</h2>
 
-    <form action="{{ route('actualites.update', $actualite->id) }}" method="POST">
+    <form action="{{ route('actualite.update', $actualite->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
