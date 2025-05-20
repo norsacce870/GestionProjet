@@ -279,7 +279,6 @@
     </div>
 
 
-
   <!-- Section "Contactez Nous" avec animation -->
   <section class="bg-white px-4 md:px-6 py-8 md:py-12">
     <div class="max-w-7xl mx-auto">
@@ -324,22 +323,20 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     <!-- Vidéo 1 -->
-    <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID1/hqdefault.jpg" alt="Vidéo 1" class="w-full h-auto rounded shadow-md">
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">4:20</span>
-    </div>
+     <div class="relative">
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=MQQsyuH0cOg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
+
 
     <!-- Vidéo 2 -->
     <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID2/hqdefault.jpg" alt="Vidéo 2" class="w-full h-auto rounded shadow-md">
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-sm px-2 py-0.5 rounded">5:55</span>
-    </div>
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=SldWlrg8ogo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
 
     <!-- Vidéo 3 -->
     <div class="relative">
-      <img src="https://img.youtube.com/vi/VIDEO_ID3/hqdefault.jpg" alt="Vidéo 3" class="w-full h-auto rounded shadow-md">
-    </div>
-  </div>
+     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=uUOZWmhs4EE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
+   </div>
 </section>
 
   <section class="bg-white py-12 px-6">
@@ -348,11 +345,11 @@
   </h2>
 
   <div class="mt-8 flex flex-wrap justify-around items-center gap-6">
-    <img src="1.png" alt="FIFA" class="h-20" />
-    <img src="2.png" alt="CAF" class="h-20" />
+    <img src="FIFA-removebg-preview.png" alt="FIFA" class="h-20" />
+    <img src="CAF-removebg-preview.png" alt="CAF" class="h-20" />
     <img src="3.png" alt="Puma" class="h-20" />
-    <img src="4.png" alt="@bidjan.net" class="h-20" />
-    <img src="5.png" alt="Canal+" class="h-20" />
+    <img src="abidjan-net-removebg-preview.png" alt="@bidjan.net" class="h-20" />
+    <img src="CANAL-removebg-preview.png" alt="Canal+" class="h-20" />
   </div>
 </section>
 

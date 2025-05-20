@@ -28,8 +28,8 @@
                     <tbody class="bg-white dark:bg-gray-800">
                         @forelse ($galeries as $galerie)
                             <tr class="border-b border-gray-200 dark:border-gray-700">
-                                <td class="px-6 py-4 text-gray-900 dark:text-white">{{ $galerie->nom_event }}</td>
-                                <td class="px-6 py-4 text-gray-900 dark:text-white">{{ Str::limit($galerie->description_event, 50) }}</td>
+                                <td class="px-6 py-4 text-gray-900 dark:text-white">{{ $galerie->nom }}</td>
+                                <td class="px-6 py-4 text-gray-900 dark:text-white">{{ Str::limit($galerie->description_event, 30) }}</td>
                                 <td class="px-6 py-4 text-gray-900 dark:text-white">
                                     <img src="{{ $galerie->getFirstMediaUrl('photo_couv') }}" alt="photo couv" class="w-20 h-20 object-cover">
                                 </td>
