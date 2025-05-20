@@ -40,7 +40,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
                                     </form>
-                                    <a href="{{ route('actualite.show', $actu->id) }}" class="text-green-600 hover:underline">Afficher</a>
+
                                 </td>
                             </tr>
                         @empty
