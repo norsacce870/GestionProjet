@@ -32,9 +32,9 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $coordonnee->nom ?? '-' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if($coordonnee->icone)
-                                    <img src="{{ asset('storage/' . $coordonnee->icone) }}" alt="Icône" class="h-8 w-8 rounded-full object-cover border">
+                                    <i class="{{ $coordonnee->icone }} fs-4 text-primary"></i>
                                 @else
-                                    <span class="text-gray-400">-</span>
+                                    <span class="text-blue-600">-</span>
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -44,12 +44,14 @@
                                 {{ $coordonnee->created_at ? $coordonnee->created_at->format('d/m/Y H:i') : '-' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
-                                <a href="{{ route('coordonnee.edit', $coordonnee) }}" class="text-blue-600 hover:underline">Éditer</a>
-                                <form action="{{ route('coordonnee.destroy', $coordonnee) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette coordonnée ?');">
+
+                                <a href="{{ route('coordonnee.edit', $coordonnee) }}" class="text-blue-600 hover:underline ml-2">Modifier</a>
+                                <form action="{{ route('coordonnee.destroy', $coordonnee) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette coordonnée ?');" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline ml-2">Supprimer</button>
                                 </form>
+                                 <a href="{{ route('coordonnee.show', $coordonnee) }}" class="text-green-600 hover:underline">Afficher</a>
                             </td>
                         </tr>
                     @empty

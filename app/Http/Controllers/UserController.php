@@ -60,27 +60,27 @@ class UserController extends Controller
     }
 
     // Update the specified user in storage.
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
+   public function update(Request $request, $id)
+{
+    $user = User::findOrFail($id);
 
-        $validated = $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
+    $validated = $request->validate([
+        'nom' => 'required|string|max:255',
+        'prenom' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'password' => 'nullable|string|min:8|confirmed',
+    ]);
 
-        if ($validated['password']) {
-            $validated['password'] = Hash::make($validated['password']);
-        } else {
-            unset($validated['password']);
-        }
-
-        $user->update($validated);
-
-        return redirect()->route('user.index')->with('success', 'Utilisateur mis à jour avec succès.');
+    if (!empty($validated['password'])) {
+        $validated['password'] = Hash::make($validated['password']);
+    } else {
+        unset($validated['password']);
     }
+
+    $user->update($validated);
+
+    return redirect()->route('user.index')->with('success', 'Utilisateur mis à jour avec succès.');
+}
 
     // Remove the specified user from storage.
     public function destroy($id)
