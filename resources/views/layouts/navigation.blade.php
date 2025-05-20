@@ -14,8 +14,8 @@
                 <!-- Navigation Links -->
                 <div class="hidden gap-3 sm:flex sm:items-center sm:space-x-6 ms-10" x-data="{ openMedia: false, openUsers: false, openCom: false, openInfo: false, openRelations: false }">
 
-                    <div class="relative text-sm font-medium text-white mt-2">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <div class="relative text-sm font-medium  mt-2">
+                        <x-nav-link :href="route('dashboard')" class="text-white" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
