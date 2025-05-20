@@ -30,7 +30,7 @@ class GalerieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom_event' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'description_event' => 'nullable|string',
             'photo_couv' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'photos.*' => 'image|mimes:jpeg,png,jpg|max:2048',
@@ -38,7 +38,7 @@ class GalerieController extends Controller
 
         // Création de l'événement
         $galerie = Galerie::create([
-            'nom_event' => $request->nom_event,
+            'nom' => $request->nom,
             'description_event' => $request->description_event,
         ]);
 
@@ -85,14 +85,14 @@ class GalerieController extends Controller
     public function update(Request $request, Galerie $galerie)
     {
         $request->validate([
-            'nom_event' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'description_event' => 'nullable|string',
             'photo_couv' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $galerie->update([
-            'nom_event' => $request->nom_event,
+            'nom' => $request->nom,
             'description_event' => $request->description_event,
         ]);
 
