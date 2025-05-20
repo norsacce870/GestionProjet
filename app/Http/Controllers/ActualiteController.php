@@ -7,10 +7,10 @@ use App\Models\Actualite;
 
 class ActualiteController extends Controller
 {
-    // Affiche toutes les actualités
+    // Affiche toutes les actualités avec pagination et tri décroissant
     public function index()
     {
-        $actualites = Actualite::all();
+        $actualites = Actualite::orderBy('created_at', 'desc')->paginate(10);
         return view('actualite.index', compact('actualites'));
     }
 
@@ -32,6 +32,13 @@ class ActualiteController extends Controller
         Actualite::create($request->all());
 
         return redirect()->route('actualite.index')->with('success', 'Actualité ajoutée avec succès.');
+    }
+
+    // Affiche le détail d'une actualité
+    public function show($id)
+    {
+        $actualite = Actualite::findOrFail($id);
+        return view('actualite.show', compact('actualite'));
     }
 
     // Formulaire d'édition

@@ -9,6 +9,13 @@
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Liste des Actualités</h2>
 
+            {{-- Message de succès --}}
+            @if(session('success'))
+                <div class="mb-4 p-4 bg-green-100 text-green-800 rounded shadow">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="overflow-x-auto bg-white rounded-lg shadow">
                 <div class="flex justify-end p-4">
                     <a href="{{ route('actualite.create') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">
@@ -29,7 +36,7 @@
                     <tbody class="bg-white divide-y divide-gray-100">
                         @forelse ($actualites as $actu)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration + ($actualites->currentPage() - 1) * $actualites->perPage() }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $actu->nom }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $actu->auteur }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ Str::limit($actu->contenu, 50) }}</td>
@@ -40,7 +47,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
                                     </form>
-
+                                    <a href="{{ route('actualite.show', $actu->id) }}" class="text-green-600 hover:underline">Afficher</a>
                                 </td>
                             </tr>
                         @empty
@@ -50,6 +57,11 @@
                         @endforelse
                     </tbody>
                 </table>
+
+                {{-- Pagination --}}
+                <div class="p-4">
+                    {{ $actualites->links() }}
+                </div>
             </div>
         </div>
     </div>
