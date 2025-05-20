@@ -10,12 +10,12 @@
     <div class="py-12 bg-[#f4f6f8] dark:bg-gray-900">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                <!-- Cartes des statistiques -->
+
                 @php
                     $cards = [
-                        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-[#F7941D]'], // Orange
-                        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-[#FFFFFF]'], // Blanc (gris clair)
-                        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-[#009639]'], // Vert
+                        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-[#F7941D]'],
+                        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-[#FFFFFF]'],
+                        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-[#009639]'],
                         ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-[#F7941D]'],
                         ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-[#009639]'],
                     ];
@@ -29,7 +29,7 @@
                 @endforeach
             </div>
 
-            <!-- Graphique -->
+
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Statistiques générales</h3>
                 <canvas id="statsChart" height="100"></canvas>
@@ -47,9 +47,9 @@
                     label: 'Nombre total',
                     data: [{{ $userCount }}, {{ $videoCount }}, {{ $playerCount }}, {{ $pubCount }}, {{ $palmaresCount }}],
                     backgroundColor: [
-                        '#F7941D', // Orange
-                        '#E5E5E5', // Blanc/gris clair
-                        '#009639', // Vert
+                        '#F7941D', 
+                        '#E5E5E5',
+                        '#009639',
                         '#F7941D',
                         '#009639'
                     ],
