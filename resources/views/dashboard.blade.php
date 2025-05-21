@@ -32,6 +32,8 @@
         </div>
     </x-slot>
 
+
+
 <div class="py-12 bg-[#f4f6f8] dark:bg-gray-900 min-h-screen">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-10">
 
