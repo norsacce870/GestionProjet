@@ -50,7 +50,7 @@
                                     {{ Str::limit($actu->contenu, 50) }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                                    {{ $actu->updated_at->format('d/m/Y H:i') }}
+                                    {{ $actu->updated_at->diffForHumans() }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
                                     <a href="{{ route('actualite.edit', $actu->id) }}" class="text-blue-600 hover:underline">Modifier</a>
