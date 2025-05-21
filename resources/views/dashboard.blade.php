@@ -33,7 +33,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($cards as $card)
                     @php $change = $card['change'] ?? 0; @endphp
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400 animate-fade-in">
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $card['label'] }}</h3>
                         <p class="text-4xl font-bold {{ $card['color'] }} mt-2 flex items-center gap-2">
                             {{ $card['count'] }}
@@ -46,24 +46,35 @@
             </div>
 
             {{-- Bar Chart --}}
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Statistiques générales</h3>
                 <canvas id="statsChart" height="100"></canvas>
             </div>
 
             {{-- Doughnut & Line Charts --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs</h3>
                     <canvas id="doughnutChart" height="200"></canvas>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Utilisateurs actifs par mois</h3>
                     <canvas id="lineChart" height="200"></canvas>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 
     <script>
         // Theme toggle
