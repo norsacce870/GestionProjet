@@ -13,7 +13,6 @@ use Spatie\Image\Enums\Fit;
 class Player extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-
     protected $fillable = [
         'nom',
         'prenom',

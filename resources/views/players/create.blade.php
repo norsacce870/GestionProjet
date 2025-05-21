@@ -19,7 +19,7 @@ create:<x-app-layout>
                     </div>
                 @endif
 
-                <form action="{{ route('players.store') }}" method="POST" class="space-y-6">
+                <form action="{{ route('players.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -75,6 +75,10 @@ create:<x-app-layout>
                         <input type="number" step="0.01" name="valeur" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow-sm" value="{{ old('valeur') }}">
                     </div>
 
+                    <div>
+                        <label for="image" class="block font-medium text-sm text-gray-800 dark:text-white">Photo</label>
+                        <input type="file" name="image" class="mt-1 block w-full text-gray-800 dark:text-white">
+                    </div>
 
                     <div class="flex justify-end space-x-4">
                         <button type="submit"
