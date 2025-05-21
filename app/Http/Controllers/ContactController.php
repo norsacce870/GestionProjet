@@ -41,7 +41,7 @@ public function store(Request $request)
     public function show(string $id)
     {
         $contact = Contact::findOrFail($id);
-        return view('contacts.show', compact('contact'));
+        return view('contact.show', compact('contact'));
     }
 
     /**
