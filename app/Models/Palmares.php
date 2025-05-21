@@ -18,7 +18,6 @@ class Palmares extends Model implements HasMedia
         'valeur',
         'titre',
         'sous_titre',
-        'image',
     ];
 
     public function user()

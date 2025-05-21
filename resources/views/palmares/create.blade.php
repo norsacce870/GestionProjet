@@ -30,14 +30,7 @@
                             class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
                             placeholder="Entrez un sous-titre">
                     </div>
-                    <div>
-                        <label for="image"
-                            class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Image</label>
-                        <input type="file" name="image" id="image"
-                            class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600">
-                         </div>
-
-                    <div>
+                    
                         <button type="submit"
                             class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition duration-200">
                             Ajouter

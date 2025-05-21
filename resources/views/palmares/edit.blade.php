@@ -36,21 +36,7 @@
                             placeholder="Entrez un sous-titre">
                     </div>
 
-                    <div>
-                        <label for="image"
-                            class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Image</label>
-                        <input type="file" name="image" id="image" value="{{ old('image', $palmares->image) }}"
-                            class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EA580C]"
-                            placeholder="Entrez un sous-titre">
-                        @if ($palmares->image)
-                            <div class="mt-4">
-                                <p class="text-gray-700 dark:text-gray-300 mb-2">Image actuelle :</p>
-                                <img src="{{ asset('storage/' . $palmares->image) }}" alt="Image actuelle"
-                                    class="w-32 h-32 object-cover rounded border border-gray-300 dark:border-gray-600">
-                            </div>
-                        @endif
-
-                    </div>
+            
 
                     <div>
                         <button type="submit"

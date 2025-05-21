@@ -15,12 +15,7 @@
                     <strong>Sous-titre:</strong> {{ $palmares->sous_titre }}
                 </p>
 
-
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center my-5">Image</h2>
-                    <img src="{{ asset('storage/' . $palmares->image) }}" alt="Image"
-                        class="w-full h-auto mb-6 object-cover rounded">
-
-
+                
                 <a href="{{ route('palmares.index') }}"
                     class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">
                     retour

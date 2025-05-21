@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Palmares;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
 
 class PalmaresController extends Controller
 {
@@ -35,7 +33,6 @@ class PalmaresController extends Controller
         'valeur' => 'required|numeric',
         'titre' => 'required|string|max:255',
         'sous-titre' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation de l'image
     ]);
 
     // Enregistrement
@@ -43,7 +40,6 @@ class PalmaresController extends Controller
         'valeur' => $request->valeur,
         'titre' => $request->titre,
         'sous_titre' => $request->input('sous-titre'), // le champ HTML est 'sous-titre'
-        'image' => $request->file('image')->store('palmares', 'public'), // Enregistrement de l'image
     ]);
 
     // Redirection vers l’index
@@ -71,32 +67,21 @@ class PalmaresController extends Controller
     /**
      * Update the specified resource in storage.
      */
-  public function update(Request $request, $id)
-{
-    $palmares = Palmares::findOrFail($id); // On récupère le modèle manuellement
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'valeur' => 'required|integer',
+            'titre' => 'required|string|max:255',
+            'sous_titre' => 'required|string|max:255',
+        ]);
 
-    $data = $request->validate([
-        'valeur' => 'required|integer',
-        'titre' => 'required|string|max:255',
-        'sous_titre' => 'required|string|max:255',
-        'image' => 'nullable|image|max:2048',
-    ]);
 
-    if ($request->hasFile('image')) {
-        // Supprimer l’ancienne image si elle existe
-        if ($palmares->image && Storage::exists('public/' . $palmares->image)) {
-            Storage::delete('public/' . $palmares->image);
-        }
 
-        // Sauvegarder la nouvelle image
-        $data['image'] = $request->file('image')->store('palmares', 'public');
+        $palmares = Palmares::findOrFail($id);
+        $palmares->update($request->all());
+
+        return redirect()->route('palmares.index')->with('success', 'Palmarès updated successfully.');
     }
-
-    $palmares->update($data); // Ceci fonctionnera car $palmares est bien un modèle
-
-    return redirect()->route('palmares.index')->with('success', 'Palmarès mis à jour avec succès.');
-}
-
 
     /**
      * Remove the specified resource from storage.
