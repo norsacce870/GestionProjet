@@ -1,3 +1,4 @@
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @php
@@ -23,6 +24,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Dashboard') }}
             </h2>
+            <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded transition">🌙/☀️</button>
         </div>
     </x-slot>
 
@@ -44,9 +46,31 @@
                 <canvas id="statsChart" height="100"></canvas>
             </div>
 
+            {{-- Doughnut & Line Charts --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs</h3>
+                    <canvas id="doughnutChart" height="200"></canvas>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Utilisateurs actifs par mois</h3>
+                    <canvas id="lineChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {{-- Scripts --}}
     <script>
+        // Theme toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
         // Bar Chart
         const statsCtx = document.getElementById('statsChart').getContext('2d');
         new Chart(statsCtx, {
@@ -83,5 +107,62 @@
             }
         });
 
+        // Doughnut Chart
+        const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Abonnés', 'Invités', 'Admins'],
+                datasets: [{
+                    data: [60, 30, 10],
+                    backgroundColor: ['#F97316', '#E5E5E5', '#10B981'],
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#4B5563' }
+                    }
+                }
+            }
+        });
+
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($months) !!},
+                datasets: [{
+                    label: 'Utilisateurs actifs',
+                    data: {!! json_encode($monthlyData) !!},
+                    fill: true,
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    pointBackgroundColor: '#F97316'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#4B5563' }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#6B7280' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#6B7280' }
+                    }
+                }
+            }
+        });
     </script>
 </x-app-layout>

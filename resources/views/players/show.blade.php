@@ -1,20 +1,18 @@
-Show.blade.php:
-
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold text-gray-800 leading-tight">
-            👤 Détails du Joueur
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white leading-tight">
+            Détails du Joueur
         </h2>
     </x-slot>
 
-    <div class="py-12 bg-gray-100">
+    <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                 <div class="space-y-4">
                     <div>
-                        <h3 class="text-xl font-semibold">{{ $player->prenom }} {{ $player->nom }}</h3>
+                        <h3 class="text-xl text-gray-800 dark:text-white font-semibold">{{ $player->prenom }} {{ $player->nom }}</h3>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800 dark:text-white">
                         <p><span class="font-semibold">Poste:</span> {{ $player->poste }}</p>
                         <p><span class="font-semibold">Numéro:</span> {{ $player->numero }}</p>
                         <p><span class="font-semibold">Date de naissance:</span> {{ $player->naissance_at }}</p>
