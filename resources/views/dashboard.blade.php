@@ -35,24 +35,35 @@
 <div class="py-12 bg-[#f4f6f8] dark:bg-gray-900 min-h-screen">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-10">
 
-        {{-- Cartes principales --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($cards as $index => $card)
-                @php $change = $card['change'] ?? 0; @endphp
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400 animate-fade-in"
-                    style="animation-delay: {{ $index * 100 }}ms;">
-                    <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $card['label'] }}</h3>
-                    <p class="text-4xl font-bold {{ $card['color'] }} mt-2 flex items-center gap-2">
-                        {{ $card['count'] }}
-                        @if ($change !== 0)
-                            <span class="text-sm {{ $change >= 0 ? 'text-green-500' : 'text-red-500' }} flex items-center">
-                                {{ $change >= 0 ? '▲' : '▼' }} {{ abs($change) }}%
-                            </span>
-                        @endif
-                    </p>
-                </div>
-            @endforeach
+{{-- Cartes principales --}}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @foreach ($cards as $index => $card)
+        @php $change = $card['change'] ?? 0; @endphp
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400 animate-fade-in"
+            style="animation-delay: {{ $index * 100 }}ms;">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $card['label'] }}</h3>
+            <p class="text-4xl font-bold {{ $card['color'] }} mt-2 flex items-center gap-2">
+                {{ $card['count'] }}
+                @if ($change !== 0)
+                    <span class="text-sm {{ $change >= 0 ? 'text-green-500' : 'text-red-500' }} flex items-center gap-1 group relative">
+                        <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                            {{ $change >= 0 ? 'Hausse' : 'Baisse' }} de {{ abs($change) }}%
+                        </span>
+                        <svg class="w-4 h-4 animate-bounce-slow" fill="currentColor" viewBox="0 0 20 20">
+                            @if ($change >= 0)
+                                <path d="M5 10l5-5 5 5H5z" />
+                            @else
+                                <path d="M5 10l5 5 5-5H5z" />
+                            @endif
+                        </svg>
+                        {{ abs($change) }}%
+                    </span>
+                @endif
+            </p>
         </div>
+    @endforeach
+</div>
+
 
         {{-- Statistiques générales --}}
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
@@ -130,6 +141,18 @@
         100% {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+        .animate-bounce-slow {
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-4px);
         }
     }
 </style>
