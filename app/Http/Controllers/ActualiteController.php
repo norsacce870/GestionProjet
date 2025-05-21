@@ -26,10 +26,21 @@ class ActualiteController extends Controller
         $request->validate([
             'nom' => 'required|string|max:255',
             'auteur' => 'required|string|max:255',
-            'contenu' => 'required|string',
+            'contenu' => 'required|string', // ici tu peux modifier si contenu sert pour l’image
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Actualite::create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/actualites', $imageName);
+            // Stocke le nom du fichier dans "contenu"
+            $data['contenu'] = $imageName;
+        }
+
+        Actualite::create($data);
 
         return redirect()->route('actualite.index')->with('success', 'Actualité ajoutée avec succès.');
     }
@@ -55,10 +66,21 @@ class ActualiteController extends Controller
             'nom' => 'required|string|max:255',
             'auteur' => 'required|string|max:255',
             'contenu' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $actualite = Actualite::findOrFail($id);
-        $actualite->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/actualites', $imageName);
+            // Stocke le nom du fichier dans "contenu"
+            $data['contenu'] = $imageName;
+        }
+
+        $actualite->update($data);
 
         return redirect()->route('actualite.index')->with('success', 'Actualité mise à jour avec succès.');
     }
