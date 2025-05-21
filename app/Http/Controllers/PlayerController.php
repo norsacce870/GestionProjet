@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Player;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::all();
+        $players = Player::orderBy('created_at', 'desc')->paginate(10);
         return view('players.index', compact('players'));
     }
 
@@ -42,7 +43,6 @@ class PlayerController extends Controller
             'club' => 'nullable|string',
             'valeur' => 'nullable|numeric',
             'fin_contrat_at' => 'nullable|date',
-
         ]);
 
         Player::create([
