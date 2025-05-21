@@ -12,6 +12,8 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead class="bg-[#EA580C] dark:bg-orange-700">
                         <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#
+                            </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Valeur</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
@@ -27,6 +29,8 @@
                     <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                         @foreach ($palmares as $item)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                    {{ $loop->iteration }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
                                     {{ $item->valeur }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
