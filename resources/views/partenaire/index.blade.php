@@ -38,39 +38,51 @@
 
                             <!-- Table -->
                             <div class="bg-white shadow-md rounded-lg p-4">
-                                <table class="w-full text-left border-collapse">
+                                <table class="w-full text-left border-collapse" id="partnerTable">
                                     <thead>
                                         <tr class="border-b">
                                             <th class="p-3">Nom</th>
                                             <th class="p-3">Logo</th>
+                                            <th class="p-3">Ajouté</th>
+                                            <th class="p-3">Modifié</th>
                                             <th class="p-3">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($partenaires as $partenaire)
-                                        <tr class="border-b">
-                                            <td class="p-3">{{ $partenaire->nom }}</td>
-                                            <td class="p-3">
-                                                @if ($partenaire->getFirstMediaUrl())
-                                                    <img src="{{ $partenaire->getFirstMediaUrl() }}" alt="Logo" class="h-12 w-auto rounded">
-                                                @else
-                                                    <span class="text-gray-400 italic">Aucun logo</span>
-                                                @endif
-                                            </td>
-                                            <td class="py-2 px-4 border-b space-x-1">
-                                                <a href="{{ route('partenaire.edit', $partenaire->id) }}" class="bg-blue-500 text-white px-2 py-1 rounded">Modifier</a>
+                                            <tr class="border-b">
+                                                <td class="p-3">{{ $partenaire->nom }}</td>
+                                                <td class="p-3">
+                                                    @if ($partenaire->getFirstMediaUrl())
+                                                        <img src="{{ $partenaire->getFirstMediaUrl() }}" alt="Logo" class="h-12 w-auto rounded">
+                                                    @else
+                                                        <span class="text-gray-400 italic">Aucun logo</span>
+                                                    @endif
+                                                </td>
+                                                <td class="p-3">
+                                                    {{ $partenaire->created_at->format('d/m/Y H:i') }}
+                                                </td>
+                                                <td class="p-3">
+                                                    @if ($partenaire->created_at->eq($partenaire->updated_at))
+                                                        Jamais modifié
+                                                    @else
+                                                        Modifié {{ $partenaire->updated_at->diffForHumans() }}
+                                                    @endif
+                                                </td>
+                                                <td class="py-2 px-4 space-x-1">
+                                                    <a href="{{ route('partenaire.edit', $partenaire->id) }}" class="bg-blue-500 text-white px-2 py-1 rounded">Modifier</a>
 
-                                                <form action="{{ route('partenaire.destroy', $partenaire->id) }}" method="POST" class="inline-block">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce partenaire ?')">
-                                                        Supprimer
-                                                    </button>
-                                                </form>
+                                                    <form action="{{ route('partenaire.destroy', $partenaire->id) }}" method="POST" class="inline-block">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce partenaire ?')">
+                                                            Supprimer
+                                                        </button>
+                                                    </form>
 
-                                                <a href="{{ route('partenaire.show', $partenaire->id) }}" class="bg-green-500 text-white px-2 py-1 rounded">Voir</a>
-                                            </td>
-                                        </tr>
+                                                    <a href="{{ route('partenaire.show', $partenaire->id) }}" class="bg-green-500 text-white px-2 py-1 rounded">Voir</a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -82,4 +94,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function searchPartners() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let rows = document.querySelectorAll('#partnerTable tbody tr');
+
+            rows.forEach(row => {
+                const name = row.querySelector('td:first-child').textContent.toLowerCase();
+                row.style.display = name.includes(input) ? '' : 'none';
+            });
+        }
+    </script>
 </x-app-layout>
