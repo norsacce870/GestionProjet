@@ -12,9 +12,10 @@ class GalerieController extends Controller
      */
     public function index()
     {
-        $galeries = Galerie::all();
+        $galeries = Galerie::orderBy('created_at', 'desc')->paginate(10);
         return view('galerie.index', compact('galeries'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -98,7 +99,7 @@ class GalerieController extends Controller
 
         if ($request->hasFile('photo_couv')) {
             $galerie->clearMediaCollection('cover');
-        $galerie->addMediaFromRequest('photo_couv')->toMediaCollection('cover');
+            $galerie->addMediaFromRequest('photo_couv')->toMediaCollection('cover');
         }
 
         if ($request->hasFile('photos')) {

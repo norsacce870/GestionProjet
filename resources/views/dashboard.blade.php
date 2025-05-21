@@ -9,11 +9,11 @@
     }
 
     $cards = [
-        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-orange-500'],
-        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-gray-300'],
-        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-green-600'],
-        ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-orange-500'],
-        ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-green-600'],
+        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-orange-500', 'change' => 12],
+        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-gray-300', 'change' => -5],
+        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-green-600', 'change' => 8],
+        ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-orange-500', 'change' => 3],
+        ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-green-600', 'change' => 0],
     ];
 @endphp
 
@@ -23,6 +23,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Dashboard') }}
             </h2>
+            <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded transition">🌙/☀️</button>
         </div>
     </x-slot>
 
@@ -31,22 +32,61 @@
             {{-- Cards --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($cards as $card)
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400">
+                    @php $change = $card['change'] ?? 0; @endphp
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400 animate-fade-in">
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $card['label'] }}</h3>
-                        <p class="text-4xl font-bold {{ $card['color'] }} mt-2">{{ $card['count'] }}</p>
+                        <p class="text-4xl font-bold {{ $card['color'] }} mt-2 flex items-center gap-2">
+                            {{ $card['count'] }}
+                            <span class="text-sm {{ $change >= 0 ? 'text-green-500' : 'text-red-500' }} flex items-center">
+                                {{ $change >= 0 ? '▲' : '▼' }} {{ abs($change) }}%
+                            </span>
+                        </p>
                     </div>
                 @endforeach
             </div>
 
             {{-- Bar Chart --}}
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Statistiques générales</h3>
                 <canvas id="statsChart" height="100"></canvas>
             </div>
 
+            {{-- Doughnut & Line Charts --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs</h3>
+                    <canvas id="doughnutChart" height="200"></canvas>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Utilisateurs actifs par mois</h3>
+                    <canvas id="lineChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {{-- Scripts --}}
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
     <script>
+        // Theme toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
         // Bar Chart
         const statsCtx = document.getElementById('statsChart').getContext('2d');
         new Chart(statsCtx, {
@@ -83,5 +123,62 @@
             }
         });
 
+        // Doughnut Chart
+        const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Abonnés', 'Invités', 'Admins'],
+                datasets: [{
+                    data: [60, 30, 10],
+                    backgroundColor: ['#F97316', '#E5E5E5', '#10B981'],
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#4B5563' }
+                    }
+                }
+            }
+        });
+
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($months) !!},
+                datasets: [{
+                    label: 'Utilisateurs actifs',
+                    data: {!! json_encode($monthlyData) !!},
+                    fill: true,
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    pointBackgroundColor: '#F97316'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#4B5563' }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#6B7280' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#6B7280' }
+                    }
+                }
+            }
+        });
     </script>
 </x-app-layout>
