@@ -290,21 +290,37 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     <!-- Vidéo 1 -->
-     <div class="relative">
-     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=MQQsyuH0cOg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
-   </div>
-
+    <div class="relative aspect-video">
+      <iframe class="w-full h-full rounded shadow-md"
+              src="https://www.youtube.com/embed/uUOZWmhs4EE"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
 
     <!-- Vidéo 2 -->
-    <div class="relative">
-     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=SldWlrg8ogo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
-   </div>
+    <div class="relative aspect-video">
+      <iframe class="w-full h-full rounded shadow-md"
+              src="https://www.youtube.com/embed/wYtJ0XVbFC8"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
 
     <!-- Vidéo 3 -->
-    <div class="relative">
-     <iframe width="100%" height="auto" src="https://www.youtube.com/watch?v=uUOZWmhs4EE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-auto rounded shadow-md aspect-video"></iframe>
-   </div>
+    <div class="relative aspect-video">
+      <iframe class="w-full h-full rounded shadow-md"
+              src="https://www.youtube.com/embed/SldWlrg8ogo"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </div>
 </section>
+
 
 <section class="bg-white py-12 px-6">
   <h2 class="text-2xl font-bold text-gray-800">
