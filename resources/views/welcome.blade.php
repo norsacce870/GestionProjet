@@ -280,41 +280,8 @@
 
 
   <!-- Section "Contactez Nous" avec animation -->
-  <section class="bg-white px-4 md:px-6 py-8 md:py-12">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex justify-center mb-8" data-aos="fade-down">
-        <h2 class="text-2xl md:text-3xl font-bold border-l-4 border-orange-600 pl-4 text-center">Contactez Nous</h2>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="flex items-center justify-center" data-aos="fade-right" data-aos-delay="200">
-            <div class="flex items-center justify-center">
-                <img src="{{ asset('rectangle 7.png') }}" alt="Champions CAN 2023" class="w-full max-w-md rounded-lg shadow-md">
-            </div>
-        </div>
-          <div class="flex flex-col space-y-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="relative">
-                <input type="text" placeholder="Nom & Prénom" class="w-full px-4 py-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-600 placeholder-gray-400">
-              </div>
 
-              <div class="relative">
-                <input type="email" placeholder="Adresse E-mail" class="w-full px-4 py-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-600 placeholder-gray-400">
-              </div>
-
-              <div class="relative">
-                <textarea placeholder="Message" rows="5" class="w-full px-4 py-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-600 placeholder-gray-400 resize-none"></textarea>
-              </div>
-
-              <div class="flex justify-start">
-                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md">
-                  Envoyer
-                </button>
-              </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 <section class="bg-cover bg-center text-white py-12 px-6 md:px-20" style="background-image: url('14.png');">
   <h2 class="text-3xl md:text-4xl font-bold mb-8 border-l-4 border-orange-500 pl-4 backdrop-blur-sm bg-green-900/40 inline-block">
@@ -382,8 +349,8 @@
 </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white">
-    <div class="relative py-12">
+  <footer class="bg-gray-800 max-w-7xl mx-auto text-white">
+    <div class="relative py-12 w-1000">
       <img src="{{ asset('footer.png') }}" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-30">
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
@@ -478,9 +445,9 @@
   </footer><br><br>
 <section>
     <div class="flex w-full">
-      <div class="w-1/3 h-14 bg-orange-600"></div>
-      <div class="w-1/3 h-14 bg-white"></div>
-      <div class="w-1/3 h-14 bg-green-600"></div>
+      <div class="w-1/3 h-10 bg-orange-600"></div>
+      <div class="w-1/3 h-10 bg-white"></div>
+      <div class="w-1/3 h-10 bg-green-600"></div>
     </div>
 </section>
 
