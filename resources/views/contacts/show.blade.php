@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="min-h-screen bg-orange-50 py-8">
+    <div class="min-h-screen  py-8">
         <div class="max-w-5xl mx-auto px-4">
             <h2 class="text-2xl font-bold mb-6 text-orange-700 text-center">Détails des messages Contact</h2>
 
