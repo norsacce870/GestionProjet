@@ -67,7 +67,7 @@ public function store(Request $request)
     {
         $contact = Contact::findOrFail($id);
         $contact->delete();
-        return redirect()->route('contacts.index')->with('success', 'Contact supprimé avec succès.');
+        return redirect()->route('contact.index')->with('success', 'Contact supprimé avec succès.');
 
     }
 }
