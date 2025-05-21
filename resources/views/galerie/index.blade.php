@@ -26,6 +26,7 @@
                                 de couverture</th>
                             <th class="px-6 py-3 text-sm font-medium text-left text-gray-700 dark:text-gray-200">Photos
                             </th>
+                            <th class="px-6 py-3 text-sm font-medium text-left text-gray-700 dark:text-gray-200">Créé le</th>
                             <th class="px-6 py-3 text-sm font-medium text-left text-gray-700 dark:text-gray-200">Actions
                             </th>
                         </tr>
@@ -62,6 +63,10 @@
                                     </div>
                                 </td>
 
+                                <td class="px-6 py-4 text-gray-900 dark:text-white">
+                                    {{ $galerie->created_at->diffForHumans() }}
+                                </td>
+
 
                                 <td class="px-6 py-4 space-x-4">
                                     <a href="{{ route('galerie.show', $galerie) }}"
@@ -88,6 +93,11 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="mt-6 px-4 flex justify-end">
+                {{ $galeries->links() }}
+            </div>
+
         </div>
     </div>
 </x-app-layout>
