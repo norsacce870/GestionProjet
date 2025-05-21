@@ -38,6 +38,15 @@
                     </div>
 
                     <div>
+                        <label for="image" class="block text-gray-700 font-medium mb-2">Image (optionnelle)</label>
+                        <input type="file" name="image" id="image"
+                            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('image')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <button type="submit"
                             class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition duration-200">
                             Enregistrer l’actualité

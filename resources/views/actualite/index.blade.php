@@ -27,32 +27,40 @@
                     <thead class="bg-green-600">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Image</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nom</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Auteur</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Contenu</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Modifiée le</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Modifiée il y a</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @forelse ($actualites as $actu)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <td class="px-6 py-4 text-sm text-gray-700">
                                     {{ $loop->iteration + ($actualites->currentPage() - 1) * $actualites->perPage() }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <td class="px-6 py-4 text-sm text-gray-700">
+                                    @if($actu->image)
+                                        <img src="{{ asset('storage/images/' . $actu->image) }}" alt="image actu" class="w-16 h-16 object-cover rounded">
+                                    @else
+                                        <span class="text-gray-400 italic">Aucune</span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900">
                                     {{ $actu->nom }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <td class="px-6 py-4 text-sm text-gray-900">
                                     {{ $actu->auteur }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <td class="px-6 py-4 text-sm text-gray-700">
                                     {{ Str::limit($actu->contenu, 50) }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                <td class="px-6 py-4 text-sm text-gray-600">
                                     {{ $actu->updated_at->diffForHumans() }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
+                                <td class="px-6 py-4 text-sm flex space-x-2">
                                     <a href="{{ route('actualite.edit', $actu->id) }}" class="text-blue-600 hover:underline">Modifier</a>
                                     <form action="{{ route('actualite.destroy', $actu->id) }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?');" class="inline">
                                         @csrf
@@ -64,7 +72,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-6 py-4 text-center text-gray-400">
+                                <td colspan="7" class="px-6 py-4 text-center text-gray-400">
                                     Aucune actualité enregistrée.
                                 </td>
                             </tr>
