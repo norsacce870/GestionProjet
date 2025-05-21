@@ -15,6 +15,12 @@
         ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-orange-500', 'change' => 3],
         ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-green-600', 'change' => 0],
     ];
+
+    $topUsers = [
+        ['name' => 'Alice', 'videos_watched' => 120, 'last_active' => now()->subHours(2)],
+        ['name' => 'Bob', 'videos_watched' => 98, 'last_active' => now()->subDays(1)],
+        ['name' => 'Claire', 'videos_watched' => 75, 'last_active' => now()->subMinutes(45)],
+    ];
 @endphp
 
 <x-app-layout>
@@ -61,6 +67,48 @@
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Utilisateurs actifs par mois</h3>
                     <canvas id="lineChart" height="200"></canvas>
                 </div>
+            </div>
+
+            {{-- Circular Progress Example --}}
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Progression vers l'objectif d'abonnés</h3>
+                <div class="relative w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
+                    <div class="bg-green-500 h-4 rounded-full" style="width: 75%"></div>
+                </div>
+                <p class="text-sm mt-2 text-gray-600 dark:text-gray-400">75% de l'objectif atteint</p>
+            </div>
+
+            {{-- Top utilisateurs --}}
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Top utilisateurs</h3>
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="py-2">Nom</th>
+                            <th class="py-2">Vidéos vues</th>
+                            <th class="py-2">Dernière activité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($topUsers as $user)
+                            <tr class="border-t border-gray-700">
+                                <td class="py-2">{{ $user['name'] }}</td>
+                                <td class="py-2">{{ $user['videos_watched'] }}</td>
+                                <td class="py-2">{{ \Carbon\Carbon::parse($user['last_active'])->diffForHumans() }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Notifications --}}
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Alertes récentes</h3>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+                    <li>🎥 Nouvelle vidéo ajoutée par Claire</li>
+                    <li>👤 Connexion admin depuis un nouvel appareil</li>
+                    <li>⚠️ 2 vidéos signalées aujourd’hui</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -182,3 +230,4 @@
         });
     </script>
 </x-app-layout>
+
