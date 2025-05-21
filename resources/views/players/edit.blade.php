@@ -79,7 +79,7 @@
 
                         <div>
                             <label for="taille" class="block font-medium text-sm text-gray-800 dark:text-white">Taille
-                                (m)</label>
+                                (cm)</label>
                             <input type="number" step="0.01" name="taille"
                                 value="{{ old('taille', $player->taille) }}"
                                 class="mt-1 block w-full rounded-md shadow-sm text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">

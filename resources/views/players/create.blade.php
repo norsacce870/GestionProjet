@@ -1,4 +1,4 @@
-create:<x-app-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800 dark:text-white leading-tight">
             Ajouter un Joueur
@@ -60,7 +60,7 @@ create:<x-app-layout>
                             <input type="number" step="0.01" name="poids" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow-sm" value="{{ old('poids') }}">
                         </div>
                         <div>
-                            <label for="taille" class="block font-medium text-sm text-gray-800 dark:text-white">Taille (m)</label>
+                            <label for="taille" class="block font-medium text-sm text-gray-800 dark:text-white">Taille (cm)</label>
                             <input type="number" step="0.01" name="taille" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow-sm" value="{{ old('taille') }}">
                         </div>
                     </div>
