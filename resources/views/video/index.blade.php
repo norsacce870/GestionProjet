@@ -9,18 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex">
                 <div class="flex-1 p-6">
-                    <h1 class="text-xl font-semibold mb-4">Liste des Vidéos</h1>
+                    {{-- <h1 class="text-xl font-semibold mb-4">Liste des Vidéos</h1> --}}
 
                     <div class="bg-gray-100 p-6 rounded">
                         <div class="max-w-6xl mx-auto">
 
-                            <!-- Header -->
+
                             <div class="flex justify-between items-center mb-6">
                                 <a href="{{ route('video.create') }}" class="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-md">
                                     + Ajouter une vidéo
                                 </a>
                                 <div class="flex items-center gap-2">
-                                    <!-- Search Input -->
+
                                     <div class="relative">
                                         <input
                                             type="text"
@@ -33,19 +33,19 @@
                                         </svg>
                                     </div>
 
-                                    <!-- Sort Button -->
+
                                     <button onclick="sortVideos()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-2 rounded-md">
                                         Trier par date d'ajout ↓
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Showing Count -->
+
                             <div class="flex justify-between items-center mb-4">
                                 <p class="text-gray-700">Affichage de <span class="font-semibold">{{ count($videos) }}</span> vidéos</p>
                             </div>
 
-                            <!-- Vidéo Table -->
+
                             <div class="bg-white shadow-md rounded-lg p-4 overflow-x-auto">
                                 <table class="w-full text-left border-collapse" id="videoTable">
                                     <thead>
@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <!-- JS -->
+
     <script>
         function searchVideos() {
             let input = document.getElementById("searchInput").value.toLowerCase();
@@ -115,7 +115,7 @@
             const rows = Array.from(table.rows);
 
             rows.sort((a, b) => {
-               
+
                 const dateA = parseDateFR(a.cells[2].textContent.trim());
                 const dateB = parseDateFR(b.cells[2].textContent.trim());
                 return dateB - dateA;
