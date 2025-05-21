@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <script>
-        // Gestion du thème (évite FOUC)
+        // Prévention du flash de thème
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -27,13 +27,13 @@
 </head>
 
 <body class="font-sans antialiased">
-    {{-- Loader (affiché jusqu'à chargement complet) --}}
+    {{-- Loader --}}
     <div id="loader" class="w-full flex justify-center items-center min-h-screen bg-white dark:bg-gray-900 fixed inset-0 z-50">
         <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-orange-500"></div>
     </div>
 
-    {{-- Contenu principal masqué avant chargement --}}
-    <div id="app-content" class="opacity-0 min-h-screen bg-gray-100 dark:bg-gray-900 transition-opacity duration-500">
+    {{-- Contenu principal masqué au départ, puis fondu à l'affichage --}}
+    <div id="app-content" class="opacity-0 transition-opacity duration-700 ease-in-out min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
 
         @isset($header)
@@ -52,21 +52,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script>
-        // Loader : masque après chargement complet
+        // Affiche le contenu avec un fondu doux après chargement
         window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            const content = document.getElementById('app-content');
-
-            if (loader) loader.style.display = 'none';
-            if (content) content.classList.remove('opacity-0');
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                const content = document.getElementById('app-content');
+                if (loader) loader.style.display = 'none';
+                if (content) content.classList.remove('opacity-0');
+            }, 200); // délai léger pour le fondu
         });
 
         // Gestion du bouton de thème
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             themeToggleLightIcon?.classList.remove('hidden');
         } else {
             themeToggleDarkIcon?.classList.remove('hidden');
@@ -99,4 +99,3 @@
 </body>
 
 </html>
-
