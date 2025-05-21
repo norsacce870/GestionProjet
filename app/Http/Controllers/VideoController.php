@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class VideoController extends Controller
 {
@@ -12,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos=Video::get();
+        $videos = Video::orderBy('created_at', 'desc')->get();
         return view('video.index',compact('videos'));
     }
 
@@ -37,7 +39,7 @@ class VideoController extends Controller
         Video::create([
             'titre' => $request->titre,
             'lien' => $request->lien,
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
         ]);
 
 

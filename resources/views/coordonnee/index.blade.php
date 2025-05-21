@@ -77,6 +77,14 @@
                         @endforelse
                     </tbody>
                 </table>
+                @if ($coordonnees->hasPages())
+                    <div class="p-4 flex justify-center bg-gray-50 rounded-b-lg">
+                        <div class="inline-flex rounded-md shadow-sm" aria-label="Pagination">
+                            {{ $coordonnees->onEachSide(1)->links('pagination::tailwind') }}
+                        </div>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

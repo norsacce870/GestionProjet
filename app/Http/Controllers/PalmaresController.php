@@ -11,7 +11,7 @@ class PalmaresController extends Controller
      */
     public function index()
 
-    {   $palmares = Palmares::orderBy('created_at', 'desc')->get();
+    {   $palmares = Palmares::orderBy('created_at', 'desc')->paginate(10);
         return view('palmares.index', compact('palmares'));
     }
 
