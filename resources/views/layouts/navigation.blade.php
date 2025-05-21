@@ -22,7 +22,7 @@
                     <div class="relative" @click.away="openMedia = false">
                         <button @click="openMedia = !openMedia"
                             class="text-sm font-medium mt-3.5 text-gray-800 dark:text-white">
-                            Contenus
+                            Contenus <i class="bi bi-chevron-down"></i>
                         </button>
                         <div x-show="openMedia"
                             class="absolute mt-2 w-40 bg-white dark:bg-gray-900 rounded shadow-md z-50">
@@ -57,7 +57,7 @@
                     <div class="relative" @click.away="openRelations = false">
                         <button @click="openRelations = !openRelations"
                             class="text-sm font-medium mt-3.5 text-gray-800 dark:text-white">
-                            Relations
+                            Relations <i class="bi bi-chevron-down"></i>
                         </button>
                         <div x-show="openRelations"
                             class="absolute mt-2 w-40 bg-white dark:bg-gray-900 rounded shadow-md z-50">
@@ -76,7 +76,7 @@
                     <div class="relative" @click.away="openInfo = false">
                         <button @click="openInfo = !openInfo"
                             class="text-sm font-medium mt-3.5 text-gray-800 dark:text-white">
-                            Communication
+                            Communication <i class="bi bi-chevron-down"></i>
                         </button>
                         <div x-show="openInfo"
                             class="absolute mt-2 w-40 bg-white dark:bg-gray-900 rounded shadow-md z-50">
@@ -195,5 +195,5 @@
             </div>
         </div>
     </div>
-    
+
 </nav>
