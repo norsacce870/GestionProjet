@@ -20,6 +20,9 @@
                                 Titre</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Sous-titre</th>
+
+                            <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                image</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Créé
                                 le</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
@@ -37,6 +40,11 @@
                                     {{ $item->titre }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
                                     {{ $item->sous_titre }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                    <img src="{{ asset('storage/' . $item->image) }}" alt="Image"
+                                        class="w-16 h-16 object-cover rounded">
+
+
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
                                     {{ $item->created_at ? $item->created_at->diffForHumans() : '-' }}
                                 </td>
