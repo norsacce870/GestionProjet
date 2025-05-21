@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Liste des messagesContacts') }}
+            {{ __('Liste des messages Contacts') }}
         </h2>
     </x-slot>
     <div class="min-h-screen bg-gray-100 py-8">
