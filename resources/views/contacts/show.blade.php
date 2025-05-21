@@ -20,7 +20,7 @@
                 <div class="mb-4">
                     <p><strong>Créé le:</strong> {{ $contact->created_at ? $contact->created_at->format('d/m/Y H:i') : '-' }}</p>
                 </div>
-                <a href="{{ route('contacts.index') }}" class="text-blue-600 hover:underline">Retour à la liste</a>
+                <a href="{{ route('contact.index') }}" class="text-blue-600 hover:underline">Retour à la liste</a>
             </div>
         </div>
     </div>
