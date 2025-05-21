@@ -29,7 +29,6 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Dashboard') }}
             </h2>
-            <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded transition">🌙/☀️</button>
         </div>
     </x-slot>
 
@@ -125,15 +124,7 @@
     </style>
 
     <script>
-        // Theme toggle
-        const toggleBtn = document.getElementById('theme-toggle');
-        toggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-        });
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
+
 
         // Bar Chart
         const statsCtx = document.getElementById('statsChart').getContext('2d');
