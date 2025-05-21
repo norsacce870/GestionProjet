@@ -1,4 +1,3 @@
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @php
@@ -10,11 +9,11 @@
     }
 
     $cards = [
-        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-orange-500'],
-        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-gray-300'],
-        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-green-600'],
-        ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-orange-500'],
-        ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-green-600'],
+        ['label' => 'Utilisateurs', 'count' => $userCount, 'color' => 'text-orange-500', 'change' => 12],
+        ['label' => 'Vidéos', 'count' => $videoCount, 'color' => 'text-gray-300', 'change' => -5],
+        ['label' => 'Joueurs', 'count' => $playerCount, 'color' => 'text-green-600', 'change' => 8],
+        ['label' => 'Publicités', 'count' => $pubCount, 'color' => 'text-orange-500', 'change' => 3],
+        ['label' => 'Palmarès', 'count' => $palmaresCount, 'color' => 'text-green-600', 'change' => 0],
     ];
 @endphp
 
@@ -33,9 +32,15 @@
             {{-- Cards --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($cards as $card)
+                    @php $change = $card['change'] ?? 0; @endphp
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md transform hover:scale-[1.03] transition-all duration-300 ease-out border-t-4 border-orange-400">
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $card['label'] }}</h3>
-                        <p class="text-4xl font-bold {{ $card['color'] }} mt-2">{{ $card['count'] }}</p>
+                        <p class="text-4xl font-bold {{ $card['color'] }} mt-2 flex items-center gap-2">
+                            {{ $card['count'] }}
+                            <span class="text-sm {{ $change >= 0 ? 'text-green-500' : 'text-red-500' }} flex items-center">
+                                {{ $change >= 0 ? '▲' : '▼' }} {{ abs($change) }}%
+                            </span>
+                        </p>
                     </div>
                 @endforeach
             </div>
