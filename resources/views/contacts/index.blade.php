@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Liste des messagesContacts') }}
+            {{ __('Liste des messages Contacts') }}
         </h2>
     </x-slot>
     <div class="min-h-screen bg-gray-100 py-8">
@@ -31,13 +31,13 @@
                                     {{ $contact->created_at ? $contact->created_at->diffForHumans() : '-' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm flex space-x-2">
-                                    <a href="{{ route('contacts.edit', $contact) }}" class="text-blue-600 hover:underline ml-2">Modifier</a>
-                                    <form action="{{ route('contacts.destroy', $contact) }}" method="POST" class="inline">
+
+                                    <form action="{{ route('contact.destroy', $contact) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline ml-2">Supprimer</button>
                                     </form>
-                                    <a href="{{ route('contacts.show', $contact) }}" class="text-green-600 hover:underline">Afficher</a>
+                                    <a href="{{ route('contact.show', $contact) }}" class="text-green-600 hover:underline">Afficher</a>
                                 </td>
                             </tr>
                         @empty

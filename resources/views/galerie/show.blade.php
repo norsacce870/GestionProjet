@@ -43,7 +43,14 @@
                 </div>
             @endif
 
-            <div class="mt-6 flex justify-end">
+            <div class="flex justify-between mt-6 flex-wrap gap-2">
+
+                <a href="{{ route('galerie.edit', $galerie) }}"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
+                    Modifier
+                </a>
+
+
                 <a href="{{ route('galerie.index') }}"
                     class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
                     Retour à la liste
