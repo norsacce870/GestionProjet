@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Partenaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PartenaireController extends Controller
 {
@@ -12,7 +14,7 @@ class PartenaireController extends Controller
      */
     public function index()
     {
-        $partenaires = Partenaire::with('media')->get();
+        $partenaires = Partenaire::with('media')->orderBy('created_at', 'desc')->get();
         return view('partenaire.index', compact('partenaires'));
     }
 
@@ -36,7 +38,7 @@ class PartenaireController extends Controller
 
         $partenaire = Partenaire::create([
             'nom' => $request->nom,
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
         ]);
 
         if ($request->hasFile('media')) {

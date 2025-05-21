@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Display a listing of the users. 
+    // Display a listing of the users.
     public function index()
-    {
-        $users = User::orderBy('created_at', 'desc')->get();
-        return view('user.index', compact('users'));
-    }
+{
+    $users = User::orderBy('created_at', 'desc')->paginate(10); // 10 utilisateurs par page
+    return view('user.index', compact('users'));
+}
+
 
     // Show the form for creating a new user.
     public function create()

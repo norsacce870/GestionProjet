@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class CoordonneeController extends Controller
 {
     // Display a listing of the resource.
-    public function index()
-    {
-        $coordonnees = Coordonnee::orderBy('created_at', 'desc')->get();
-        return view('coordonnee.index', compact('coordonnees'));
-    }
+   public function index()
+{
+    $coordonnees = Coordonnee::orderBy('created_at', 'desc')->paginate(10); // 10 coordonnées par page
+    return view('coordonnee.index', compact('coordonnees'));
+}
+
     public function create()
 {
 

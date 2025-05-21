@@ -12,7 +12,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
         return view('contacts.index', compact('contacts'));
     }
 
@@ -31,7 +31,7 @@ class ContactController extends Controller
 
 public function store(Request $request)
 {
-   
+
 }
 
 
