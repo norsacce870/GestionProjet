@@ -43,9 +43,10 @@ class PlayerController extends Controller
             'club' => 'nullable|string',
             'valeur' => 'nullable|numeric',
             'fin_contrat_at' => 'nullable|date',
+            'image' => 'nullable|image|max:2048',
         ]);
 
-        Player::create([
+        $player = Player::create([
             'nom' => $validated['nom'],
             'prenom' => $validated['prenom'],
             'poste' => $validated['poste'],
@@ -58,6 +59,10 @@ class PlayerController extends Controller
             'fin_contrat_at' => $validated['fin_contrat_at'],
             'user_id' => Auth::id(),
         ]);
+
+        if ($request->hasFile('image')) {
+            $player->addMediaFromRequest('image')->toMediaCollection('players');
+        }
 
         return redirect()->route('players.index')->with('success', 'Joueur créé avec succès.');
     }
@@ -96,9 +101,15 @@ class PlayerController extends Controller
             'valeur' => 'nullable|numeric',
             'fin_contrat_at' => 'nullable|date',
             'user_id' => 'nullable|exists:users,idUser',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         $player->update($validated);
+
+        if ($request->hasFile('image')) {
+            $player->clearMediaCollection('players');
+            $player->addMediaFromRequest('image')->toMediaCollection('players');
+        }
 
         return redirect()->route('players.index')->with('success', 'Joueur modifié avec succès.');
     }
