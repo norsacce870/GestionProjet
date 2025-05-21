@@ -9,25 +9,34 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex">
                 <div class="flex-1 p-6">
-                    <h1 class="text-xl font-semibold">Liste des Partenaires</h1>
+                    <h1 class="text-xl font-semibold mb-4">Liste des Partenaires</h1>
 
-                    <div class="bg-gray-100 p-6">
+                    <div class="bg-gray-100 p-6 rounded">
                         <div class="max-w-6xl mx-auto">
+
                             <!-- Header -->
                             <div class="flex justify-between items-center mb-6">
                                 <a href="{{ route('partenaire.create') }}" class="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-md">
                                     + Ajouter un partenaire
                                 </a>
-                                <div class="relative">
-                                    <input
-                                        type="text"
-                                        placeholder="Rechercher..."
-                                        id="searchInput"
-                                        class="pl-8 pr-4 py-2 rounded-md border w-80"
-                                        oninput="searchPartners()">
-                                    <svg class="absolute left-2 top-2.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 4.5a6 6 0 100 12 6 6 0 000-12zM19 19l-3.5-3.5"/>
-                                    </svg>
+                                <div class="flex items-center gap-2">
+                                    <!-- Search Input -->
+                                    <div class="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Rechercher..."
+                                            id="searchInput"
+                                            class="pl-8 pr-4 py-2 rounded-md border w-80"
+                                            oninput="searchPartners()">
+                                        <svg class="absolute left-2 top-2.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 4.5a6 6 0 100 12 6 6 0 000-12zM19 19l-3.5-3.5"/>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Sort Button -->
+                                    <button onclick="sortPartners()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-2 rounded-md">
+                                        Trier par date ↓
+                                    </button>
                                 </div>
                             </div>
 
@@ -37,10 +46,10 @@
                             </div>
 
                             <!-- Table -->
-                            <div class="bg-white shadow-md rounded-lg p-4">
+                            <div class="bg-white shadow-md rounded-lg p-4 overflow-x-auto">
                                 <table class="w-full text-left border-collapse" id="partnerTable">
                                     <thead>
-                                        <tr class="border-b">
+                                        <tr class="border-b bg-gray-200">
                                             <th class="p-3">Nom</th>
                                             <th class="p-3">Logo</th>
                                             <th class="p-3">Ajouté</th>
@@ -95,6 +104,7 @@
         </div>
     </div>
 
+    <!-- JS -->
     <script>
         function searchPartners() {
             let input = document.getElementById('searchInput').value.toLowerCase();
@@ -104,6 +114,19 @@
                 const name = row.querySelector('td:first-child').textContent.toLowerCase();
                 row.style.display = name.includes(input) ? '' : 'none';
             });
+        }
+
+        function sortPartners() {
+            const table = document.querySelector('#partnerTable tbody');
+            const rows = Array.from(table.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                const dateA = new Date(a.cells[2].textContent.trim().split(' ')[0].split('/').reverse().join('-'));
+                const dateB = new Date(b.cells[2].textContent.trim().split(' ')[0].split('/').reverse().join('-'));
+                return dateB - dateA;
+            });
+
+            rows.forEach(row => table.appendChild(row));
         }
     </script>
 </x-app-layout>

@@ -35,7 +35,7 @@
 
                                     <!-- Sort Button -->
                                     <button onclick="sortVideos()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-3 py-2 rounded-md">
-                                        Trier par date ↓
+                                        Trier par date d'ajout ↓
                                     </button>
                                 </div>
                             </div>
@@ -53,6 +53,7 @@
                                             <th class="p-3">Titre</th>
                                             <th class="p-3">Lien</th>
                                             <th class="p-3">Ajoutée le</th>
+                                            <th class="p-3">Modifiée le</th>
                                             <th class="p-3">Actions</th>
                                         </tr>
                                     </thead>
@@ -67,10 +68,12 @@
                                                     <span class="text-gray-400 italic">Aucun lien</span>
                                                 @endif
                                             </td>
+                                            <td class="p-3">{{ $video->created_at->format('d/m/Y H:i') }}</td>
                                             <td class="p-3">
-                                                {{ $video->created_at->format('d/m/Y H:i') }}
                                                 @if ($video->updated_at->gt($video->created_at))
-                                                    <br><span class="text-sm text-gray-500">Modifiée {{ $video->updated_at->diffForHumans() }}</span>
+                                                    Modifiée {{ $video->updated_at->diffForHumans() }}
+                                                @else
+                                                    Jamais modifiée
                                                 @endif
                                             </td>
                                             <td class="py-2 px-4 border-b space-x-1">
@@ -78,7 +81,7 @@
                                                 <form action="{{ route('video.destroy', $video->id) }}" method="POST" class="inline-block">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Supprimer</button>
+                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette vidéo ?')">Supprimer</button>
                                                 </form>
                                                 <a href="{{ route('video.show', $video->id) }}" class="bg-green-500 text-white px-2 py-1 rounded">Voir</a>
                                             </td>
@@ -112,13 +115,22 @@
             const rows = Array.from(table.rows);
 
             rows.sort((a, b) => {
-                const dateA = new Date(a.cells[2].textContent.trim());
-                const dateB = new Date(b.cells[2].textContent.trim());
+               
+                const dateA = parseDateFR(a.cells[2].textContent.trim());
+                const dateB = parseDateFR(b.cells[2].textContent.trim());
                 return dateB - dateA;
             });
 
-            // Re-append sorted rows
             rows.forEach(row => table.appendChild(row));
+        }
+
+
+        function parseDateFR(str) {
+            // Ex : "21/05/2025 14:30"
+            let [datePart, timePart] = str.split(' ');
+            let [day, month, year] = datePart.split('/');
+            let [hours = "0", minutes = "0"] = timePart ? timePart.split(':') : [];
+            return new Date(year, month - 1, day, hours, minutes);
         }
     </script>
 </x-app-layout>
