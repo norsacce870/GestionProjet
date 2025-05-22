@@ -15,7 +15,7 @@ class VideoController extends Controller
     public function index()
     {
         $videos = Video::orderBy('created_at', 'desc')->get();
-        return view('video.index',compact('videos'));
+        return view('video.index', compact('videos'));
     }
 
     /**
@@ -31,9 +31,15 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-                'titre' => ['required', 'string', 'max:255'],
-                'lien' => ['nullable', 'url'],
+
+        activity()
+            ->causedBy(Auth::user())
+            ->withProperties(['titre' => $request->titre])
+            ->log('Ajout d\'une vidéo');
+
+        $request->validate([
+            'titre' => ['required', 'string', 'max:255'],
+            'lien' => ['nullable', 'url'],
         ]);
 
         Video::create([
@@ -52,7 +58,7 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-         return view('video.show', compact('video'));
+        return view('video.show', compact('video'));
     }
 
     /**
@@ -60,7 +66,7 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-         return view('video.edit',compact('video'));
+        return view('video.edit', compact('video'));
     }
 
     /**
@@ -68,12 +74,18 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-         $request->validate([
+        activity()
+            ->causedBy(Auth::user())
+            ->withProperties(['titre' => $request->titre])
+            ->log('Mise à jour d\'une vidéo');
+        // Validation des données
+
+        $request->validate([
             'titre' => ['required', 'string', 'max:255'],
             'lien' => ['nullable', 'url'],
         ]);
 
-        $data = $request->only(['titre','lien']);
+        $data = $request->only(['titre', 'lien']);
         $video->update($data);
 
         $request->session()->flash('succes', 'Viédeo mise à jour avec succès.');
@@ -85,7 +97,12 @@ class VideoController extends Controller
      */
     public function destroy(Video $video)
     {
-         $video->delete();
+        activity()
+            ->causedBy(Auth::user())
+            ->withProperties(['titre' => $video->titre])
+            ->log('Suppression d\'une vidéo');
+
+        $video->delete();
         session()->flash('succes', 'Vidéo supprimée avec succès.');
         return redirect()->route('video.index');
     }
