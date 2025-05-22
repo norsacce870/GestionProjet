@@ -115,57 +115,56 @@
             </div>
 
             {{-- Répartition utilisateurs + Utilisateurs actifs --}}
- <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Bloc Répartition des utilisateurs -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs</h3>
-        <canvas id="doughnutChart" height="200"></canvas>
-    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bloc Répartition des utilisateurs -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs
+                    </h3>
+                    <canvas id="doughnutChart" height="200"></canvas>
+                </div>
 
-    <!-- Bloc Palmarès du club -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
-        <h3 class="text-xl font-bold text-black dark:text-orange-400 mb-4 flex items-center gap-2">
-            🏆 Palmarès du club
-        </h3>
+                <!-- Bloc Palmarès du club -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
+                    <h3 class="text-xl font-bold text-black dark:text-orange-400 mb-4 flex items-center gap-2">
+                        🏆 Palmarès du club
+                    </h3>
 
-        @if ($palmares->isEmpty())
-            <p class="text-sm text-gray-500 dark:text-gray-400">Aucun trophée enregistré pour le moment.</p>
-        @else
-            <ul class="space-y-4">
-                @foreach ($palmares as $item)
-                    <li
-                        class="flex items-center justify-between bg-orange-50 dark:bg-gray-700 border border-orange-200 dark:border-gray-600 p-4 rounded-xl shadow-sm transition hover:bg-orange-100 dark:hover:bg-gray-600">
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-yellow-100 dark:bg-yellow-500 rounded-full p-2">
-                                <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-100"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.175 0l-3.385 2.46c-.784.57-1.838-.197-1.539-1.118l1.286-3.966a1 1 0 00-.364-1.118L2.048 9.394c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.286-3.967z" />
-                                </svg>
-                            </div>
+                    @if ($palmares->isEmpty())
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Aucun trophée enregistré pour le moment.</p>
+                    @else
+                        <ul class="space-y-4">
+                            @foreach ($palmares as $item)
+                                <li
+                                    class="flex items-center justify-between bg-orange-50 dark:bg-gray-700 border border-orange-200 dark:border-gray-600 p-4 rounded-xl shadow-sm transition hover:bg-orange-100 dark:hover:bg-gray-600">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="bg-yellow-100 dark:bg-yellow-500 rounded-full p-2">
+                                            <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-100"
+                                                fill="currentColor" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.175 0l-3.385 2.46c-.784.57-1.838-.197-1.539-1.118l1.286-3.966a1 1 0 00-.364-1.118L2.048 9.394c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.286-3.967z" />
+                                            </svg>
+                                        </div>
 
-                            <div>
-                                <p class="text-base font-semibold text-gray-800 dark:text-white">
-                                    {{ $item->titre }}
-                                    <span class="text-sm text-green-700 dark:text-green-300">({{ $item->valeur }})</span>
-                                </p>
-                                <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    {{ $item->sous_titre }}
-                                </p>
-                            </div>
-                        </div>
+                                        <div>
+                                            <p class="text-base font-semibold text-gray-800 dark:text-white">
+                                                {{ $item->titre }}
+                                                <span
+                                                    class="text-sm text-green-700 dark:text-green-300">({{ $item->valeur }})</span>
+                                            </p>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                                                {{ $item->sous_titre }}
+                                            </p>
+                                        </div>
+                                    </div>
 
-                        <span class="text-sm font-bold text-orange-600 dark:text-orange-400">
-                            #{{ $loop->iteration }}
-                        </span>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
-
-
-
+                                    <span class="text-sm font-bold text-orange-600 dark:text-orange-400">
+                                        #{{ $loop->iteration }}
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
             </div>
 
             {{-- Progression vers l'objectif --}}
@@ -179,63 +178,57 @@
             </div>
 
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-    <h3 class="text-xl font-bold text-black dark:text-orange-400 mb-4 flex items-center gap-2">
-        <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
-            stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
-        </svg>
-        Historique des connexions
-    </h3>
+                <h3 class="text-xl font-bold text-black dark:text-orange-400 mb-4 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                    </svg>
+                    Historique des connexions
+                </h3>
 
-    <ul class="space-y-4">
-        @forelse ($lastActivities as $activity)
-            <li
-                class="flex items-center gap-4 p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-gray-700 transition">
-                <div class="flex-shrink-0">
-                    @if ($activity->description === 'Connexion')
-                        <div class="bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300 rounded-full p-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </div>
-                    @else
-                        <div class="bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300 rounded-full p-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M19 12H5M12 19l-7-7 7-7" />
-                            </svg>
-                        </div>
-                    @endif
-                </div>
+                <ul class="space-y-4">
+                    @forelse ($lastActivities as $activity)
+                        <li
+                            class="flex items-center gap-4 p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-gray-700 transition">
+                            <div class="flex-shrink-0">
+                                @if ($activity->description === 'Connexion')
+                                    <div
+                                        class="bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300 rounded-full p-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                @else
+                                    <div
+                                        class="bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300 rounded-full p-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19 12H5M12 19l-7-7 7-7" />
+                                        </svg>
+                                    </div>
+                                @endif
+                            </div>
 
-                <div class="flex-1 min-w-0">
-                    <p class="text-sm font-semibold text-gray-800 dark:text-gray-100">
-                        {{ $activity->causer->nom ?? 'Utilisateur inconnu' }}
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        s'est {{ strtolower($activity->description) }} il y a
-                        {{ $activity->created_at->diffForHumans() }}
-                    </p>
-                </div>
-            </li>
-        @empty
-            <li class="text-sm text-gray-500 dark:text-gray-400">Aucune activité récente.</li>
-        @endforelse
-    </ul>
-</div>
-
-
-
-
-
-
-
-
-        </div> {{-- Fin du wrapper principal --}}
-    </div> {{-- Fin de la section py-12 --}}
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-semibold text-gray-800 dark:text-gray-100">
+                                    {{ $activity->causer->nom ?? 'Utilisateur inconnu' }}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                    s'est {{ strtolower($activity->description) }} il y a
+                                    {{ $activity->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                        </li>
+                    @empty
+                        <li class="text-sm text-gray-500 dark:text-gray-400">Aucune activité récente.</li>
+                    @endforelse
+                </ul>
+            </div>
+        </div> 
+    </div>
 
     <style>
         .animate-fade-in {
