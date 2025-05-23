@@ -36,11 +36,26 @@ class DashboardController extends Controller
             ->latest()
             ->take(10)
             ->get();
+        // Récupération des joueurs groupés par poste avec comptage
+        $postes = Player::select('poste', \DB::raw('count(*) as total'))
+            ->groupBy('poste')
+            ->get();
+
+        // Calcul du total de joueurs
+        $total = $postes->sum('total');
+
+        // On convertit en format exploitable en vue
+        $repartition = $postes->mapWithKeys(function ($item) use ($total) {
+            $pourcentage = $total > 0 ? round(($item->total / $total) * 100) : 0;
+            return [$item->poste => $pourcentage];
+        });
 
         return view(
             'dashboard',
             [
                 'recentActivities' => $recentActivities,
+                'repartition' => $repartition,
+                'total' => $total,
                 // ... tes autres données (userCount, videoCount, etc.)
             ],
             compact(

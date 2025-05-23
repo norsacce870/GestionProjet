@@ -21,6 +21,8 @@
         ['name' => 'Bob', 'videos_watched' => 98, 'last_active' => now()->subDays(1)],
         ['name' => 'Claire', 'videos_watched' => 75, 'last_active' => now()->subMinutes(45)],
     ];
+
+    $colors = ['bg-orange-500', 'bg-blue-500', 'bg-green-500', 'bg-gray-500', 'bg-purple-500', 'bg-pink-500'];
 @endphp
 
 <x-app-layout>
@@ -30,7 +32,7 @@
                 {{ __('Dashboard') }}
             </h2>
 
-            {{-- Bouton Notifications --}}
+
             <div class="relative" x-data="{ open: false }">
                 <button @click="open = !open" id="notificationBtn" class="relative focus:outline-none">
                     <svg class="w-7 h-7 text-gray-700 dark:text-gray-200 hover:text-orange-500 transition duration-150"
@@ -43,7 +45,7 @@
                     @endif
                 </button>
 
-                {{-- Menu déroulant notifications --}}
+
                 <div x-show="open" @click.outside="open = false"
                     class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-xl z-50 p-5 transition-all duration-200"
                     x-transition>
@@ -76,7 +78,6 @@
     <div class="py-12 bg-[#f4f6f8] dark:bg-gray-900 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-10">
 
-            {{-- Cartes principales --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($cards as $index => $card)
                     @php $change = $card['change'] ?? 0; @endphp
@@ -108,22 +109,51 @@
             </div>
 
 
-            {{-- Statistiques générales --}}
+
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Statistiques générales</h3>
                 <canvas id="statsChart" height="100"></canvas>
             </div>
 
-            {{-- Répartition utilisateurs + Utilisateurs actifs --}}
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Bloc Répartition des utilisateurs -->
+
                 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Répartition des utilisateurs
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 20l4-16M4 12l16 0" />
+                        </svg>
+                        Répartition des postes
                     </h3>
-                    <canvas id="doughnutChart" height="200"></canvas>
+
+                    <div class="relative w-full max-w-xs mx-auto">
+
+                        <canvas id="doughnutChart" height="200"></canvas>
+
+
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div class="text-center">
+                                <p class="text-xl font-semibold text-gray-900 dark:text-white">100</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Joueurs</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-6 space-y-3 text-sm">
+                        @foreach ($repartition as $poste => $value)
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full {{ $colors[$loop->index % count($colors)] }}"></span>
+                                <span class="text-gray-800 dark:text-gray-200 flex-1">{{ $poste }}</span>
+                                <span class="text-gray-500 dark:text-gray-400">{{ $value }}%</span>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
 
-                <!-- Bloc Palmarès du club -->
+
+
                 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                     <h3 class="text-xl font-bold text-black dark:text-orange-400 mb-4 flex items-center gap-2">
                         🏆 Palmarès du club
@@ -167,7 +197,7 @@
                 </div>
             </div>
 
-            {{-- Progression vers l'objectif --}}
+
             <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 animate-fade-in">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Progression vers l'objectif
                     d'abonnés</h3>
@@ -227,7 +257,7 @@
                     @endforelse
                 </ul>
             </div>
-        </div> 
+        </div>
     </div>
 
     <style>
@@ -276,6 +306,14 @@
 
 
     <script>
+        const repartitionLabels = @json($repartition->keys());
+        const repartitionData = @json($repartition->values());
+        const totalJoueurs = @json($total);
+    </script>
+
+
+
+    <script>
         // Bar Chart
         const statsCtx = document.getElementById('statsChart').getContext('2d');
         new Chart(statsCtx, {
@@ -319,31 +357,51 @@
                 }
             }
         });
-
-        // Doughnut Chart
+        //dogh*nut Chart
         const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+
         new Chart(doughnutCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Abonnés', 'Invités', 'Admins'],
+                labels: repartitionLabels,
                 datasets: [{
-                    data: [60, 30, 10],
-                    backgroundColor: ['#F97316', '#E5E5E5', '#10B981'],
-                    cutout: '70%'
+                    data: repartitionData,
+                    backgroundColor: [
+                        '#F97316',
+                        '#3B82F6',
+                        '#10B981',
+                        '#64748B',
+                        '#8B5CF6', // Ajoute d'autres couleurs si nécessaire
+                        '#F43F5E'
+                    ],
+                    borderWidth: 0,
+                    cutout: '75%'
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#4B5563'
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                return `${label} : ${value}%`;
+                            }
                         }
                     }
                 }
             }
         });
+
+        // Compteur central dynamique
+        document.querySelector('.text-center p.text-xl').textContent = totalJoueurs;
+
+
 
         // Line Chart
         const lineCtx = document.getElementById('lineChart').getContext('2d');
