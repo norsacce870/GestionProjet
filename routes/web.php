@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\web\PlayersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActualiteController;
@@ -40,8 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/publicite', PubliciteController::class);
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
-
     Route::resource('admin/palmares', PalmaresController::class);
+    Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
 
 
 
