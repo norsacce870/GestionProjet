@@ -15,6 +15,11 @@ use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
 
 
+
+Route::get('/legendes', function () {
+    return view('legendes');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
