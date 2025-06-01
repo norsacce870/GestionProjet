@@ -15,7 +15,7 @@ class PlayersController extends Controller
         $milieux = Player::where('poste', 'Milieu')->get();
         $defenseurs = Player::where('poste', 'Défenseur')->get();
         $gardiens = Player::where('poste', 'Gardien')->get();
-        $videos = Video::orderBy('created_at', 'desc')->take(3)->get(); // Affiche 3 vidéos
+        $videos = Video::orderBy('created_at', 'desc')->take(3)->get();
 
         return view('web.effectif', compact('coachs', 'attaquants', 'milieux', 'defenseurs', 'gardiens' , 'videos'));
     }

@@ -1,19 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="relative bg-cover bg-center h-[400px] shadow-inner shadow-black/20"
-            style="background-image: url('{{ asset('federation.jpg') }}');">
-            <div
-                class="absolute inset-0 bg-gradient-to-r from-orange-500/60 to-purple-600/60 backdrop-blur-sm flex items-center justify-center">
-                <h1
-                    class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-xl animate-fade-in-up transition-all duration-1000 delay-200">
-                    Présentation de la Fédération
-                </h1>
-            </div>
-        </div>
-    </x-slot>
+@extends('layouts.header')
 
-    <section
-        class="bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24 overflow-hidden">
+@section('title', 'Accueil - Fédération Ivoirienne de Football')
+@section('content')
+    <section class="bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
 
             <div class="text-center max-w-3xl mx-auto animate-fade-in-up">
@@ -30,8 +19,8 @@
                     <ul class="mt-6 space-y-3 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                         @foreach (['Encourager la pratique et le développement des disciplines sportives.', 'Représenter nos membres au niveau national et international.', 'Organiser des événements fédérateurs et inclusifs.', 'Favoriser l\'accès à tous, sans distinction.'] as $mission)
                             <li class="flex items-start gap-3">
-                                <svg class="text-orange-500 w-6 h-6 mt-1 flex-shrink-0" fill="none"
-                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <svg class="text-orange-500 w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                                 {{ $mission }}
@@ -40,8 +29,7 @@
                     </ul>
                 </div>
                 <div>
-                    <img src="{{ asset('mission.jpg') }}" alt="Missions"
-                        class="rounded-3xl shadow-2xl w-full object-cover">
+                    <img src="{{ asset('mission.jpg') }}" alt="Missions" class="rounded-3xl shadow-2xl w-full object-cover">
                 </div>
             </div>
 
@@ -51,8 +39,8 @@
                     <ul class="mt-6 space-y-3 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                         @foreach (['Compétitions sportives nationales et régionales.', 'Formations pour entraîneurs et arbitres.', 'Partenariats avec les établissements scolaires.', 'Actions citoyennes et solidaires.'] as $activite)
                             <li class="flex items-start gap-3">
-                                <svg class="text-orange-500 w-6 h-6 mt-1 flex-shrink-0" fill="none"
-                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <svg class="text-orange-500 w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                                 {{ $activite }}
@@ -161,17 +149,16 @@
                     <button type="button"
                         class="absolute top-1/2 left-0 -translate-y-1/2 z-30 flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:bg-orange-600 group"
                         data-carousel-prev>
-                        <svg class="w-5 h-5 text-gray-700 group-hover:text-white" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 19l-7-7 7-7" />
+                        <svg class="w-5 h-5 text-gray-700 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <button type="button"
                         class="absolute top-1/2 right-0 -translate-y-1/2 z-30 flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:bg-orange-600 group"
                         data-carousel-next>
-                        <svg class="w-5 h-5 text-gray-700 group-hover:text-white" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-gray-700 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -179,92 +166,6 @@
             </div>
     </section>
 
-
-    <footer class="bg-black text-white pt-12 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Découvrez notre boutique en ligne</h4>
-                    <a href="#"
-                        class="inline-block bg-orange-500 hover:bg-orange-600 text-black px-4 py-2 rounded-md font-semibold">Accéder
-                        à la boutique</a>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">N'hésitez pas à nous contacter</h4>
-                    <a href="#contact"
-                        class="inline-block bg-orange-500 hover:bg-orange-600 text-black px-4 py-2 rounded-md font-semibold">Contactez-nous</a>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Application officielle</h4>
-                    <p class="mb-2 text-sm text-gray-400">Restez connecté avec notre actualité partout.</p>
-                    <div class="flex gap-4">
-                        <img src="{{ asset('appstore.png') }}" alt="App Store" class="h-10">
-                        <img src="{{ asset('playstore.png') }}" alt="Play Store" class="h-10">
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-700 pt-10 grid md:grid-cols-6 gap-8 text-sm">
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">CLUB</h5>
-                    <ul class="space-y-1">
-                        <li><a href="#">Présentation</a></li>
-                        <li><a href="#">Organisation</a></li>
-                        <li><a href="#">Légendes</a></li>
-                        <li><a href="#">Palmarès</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">DOCUMENTS</h5>
-                    <ul class="space-y-1">
-                        <li><a href="#">Statuts & règlement</a></li>
-                        <li><a href="#">Cadre juridique</a></li>
-                        <li><a href="#">Charte éthique</a></li>
-                        <li><a href="#">Règlement AAFAM</a></li>
-                        <li><a href="#">Charte MUR JAUNE</a></li>
-                        <li><a href="#">Compte d’exploitation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">SAISON</h5>
-                    <ul class="space-y-1">
-                        <li><a href="#">Équipe pro</a></li>
-                        <li><a href="#">Staff</a></li>
-                        <li><a href="#">Calendrier</a></li>
-                        <li><a href="#">Classement</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">ACADÉMIE</h5>
-                    <ul class="space-y-1">
-                        <li><a href="#">Présentation</a></li>
-                        <li><a href="#">Staff</a></li>
-                        <li><a href="#">Recrutement</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">MÉDIATHÈQUE</h5>
-                    <ul class="space-y-1">
-                        <li><a href="#">Photos</a></li>
-                        <li><a href="#">Vidéos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-orange-500 mb-2">CONTACTS</h5>
-                    <p class="mb-2 font-bold text-lg">(+225) 27 20 21 39 01</p>
-                    <p class="text-gray-400">Abidjan – Riviera – M’Pouto Sol Béni<br>01 BP 2172 Abidjan 01</p>
-                    <p class="mt-2">📧 info@asec.ci</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <style>
         @keyframes fade-in-up {
@@ -284,4 +185,4 @@
         }
     </style>
 
-</x-app-layout>
+@endsection

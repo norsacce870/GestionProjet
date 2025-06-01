@@ -23,7 +23,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
 
-    Route::view('/presentation', 'presentation')->name('presentation');
+Route::view('/presentation', 'presentation')->name('presentation');
 
 
 Route::middleware('auth')->group(function () {
