@@ -13,11 +13,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\palmaresPublicController;
 
 
-Route::get('/', function () {
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
@@ -41,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
+    Route::get('/palmaresPublic', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
+
     Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
 
 

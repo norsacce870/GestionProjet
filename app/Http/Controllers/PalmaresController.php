@@ -26,24 +26,22 @@ class PalmaresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   public function store(Request $request)
 {
-    // Validation des données
     $request->validate([
-        'valeur' => 'required|numeric',
-        'titre' => 'required|string|max:255',
-        'sous-titre' => 'required|string|max:255',
+        'titre' => 'required',
+        'sous_titre' => 'required',
+        'valeur' => 'required',
+        'image' => 'nullable|image|max:2048'
     ]);
 
-    // Enregistrement
-    Palmares::create([
-        'valeur' => $request->valeur,
-        'titre' => $request->titre,
-        'sous_titre' => $request->input('sous-titre'), // le champ HTML est 'sous-titre'
-    ]);
+    $palmares = Palmares::create($request->only('titre', 'sous_titre', 'valeur'));
 
-    // Redirection vers l’index
-    return redirect()->route('palmares.index')->with('success', 'Palmarès ajouté avec succès.');
+    if ($request->hasFile('image')) {
+        $palmares->addMediaFromRequest('image')->toMediaCollection('images');
+    }
+
+    return redirect()->route('palmares.index');
 }
 
     /**
