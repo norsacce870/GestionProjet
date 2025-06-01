@@ -9,3 +9,5 @@
       Fédération Ivoirienne <br /> de Football
     </h1>
   </section>
+  
+@endsection
