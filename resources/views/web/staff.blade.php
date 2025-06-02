@@ -24,7 +24,7 @@
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <!-- Example Staff Card -->
             <div class="bg-white dark:bg-gray-200 rounded-xl shadow-lg p-6 flex flex-col items-center transition hover:scale-105 hover:shadow-2xl duration-300">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Président" class="w-24 h-24 rounded-full border-4 border-[#EA580C] mb-4 shadow">
+                <img src="https://forbesafrique.com/wp-content/uploads/2023/12/YACINE-IDRISS-DIALLO-I-1-I-Forbes-Afrique-I-FA76-2.jpg" alt="Président" class="w-24 h-24 rounded-full border-4 border-[#EA580C] mb-4 shadow">
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Yacine Idriss Diallo</h3>
                 <p class="text-[#EA580C] dark:text-orange-400 font-medium mb-2">Président</p>
                 <p class="text-gray-500 dark:text-gray-300 text-center text-sm">Visionnaire et leader de la Fédération Ivoirienne de Football.</p>
