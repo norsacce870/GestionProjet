@@ -12,14 +12,8 @@ use App\Http\Controllers\PubliciteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
-use App\Http\Controllers\palmaresPublicController;
 use App\Http\Controllers\DashboardController;
-<<<<<<< HEAD
 use App\Http\Controllers\web\ActualitesController;
-=======
-use App\Http\Controllers\web\PlayersController;
-
->>>>>>> dc17c87b3a3953e325f9092203a382167c70c8fc
 
 Route::get('/legendes', function () {
     return view('legendes');
@@ -35,9 +29,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayerController::class, 'index'])->name('web.effectif');
-Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
-Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
