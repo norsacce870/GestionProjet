@@ -14,6 +14,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\web\StaffController;
+use App\Http\Controllers\web\PlayersController;
 
 Route::get('/legendes', function () {
     return view('legendes');
