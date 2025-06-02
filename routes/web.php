@@ -30,6 +30,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
+Route::get('/effectif/{id}', [PlayersController::class, 'show'])->name('web.effectif.show');
 
 
 Route::middleware('auth')->group(function () {
