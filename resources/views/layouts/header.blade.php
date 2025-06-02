@@ -148,7 +148,7 @@
             <img src="{{ asset('LOGO.png') }}" alt="Logo" class="w-12 logo-hover" />
             <a href="#" class="text-sm nav-link">Pratique</a>
             <a href="#" class="text-sm nav-link">Contact</a>
-              <a href="{{route('palmaresPublic.index')}}" class="text-sm nav-link">Palmares</a>
+              {{-- <a href="{{route('palmaresPublic.index')}}" class="text-sm nav-link">Palmares</a> --}}
         </div>
 
         <!-- Navigation mobile avec menu hamburger -->

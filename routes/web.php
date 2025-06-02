@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\web\ActualitesController;
 
 Route::get('/legendes', function () {
     return view('legendes');
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
 });
+
+Route::get('/actualites', [ActualitesController::class, 'index'])->name('public.actualites');
+
+
 
 require __DIR__.'/auth.php';
 
