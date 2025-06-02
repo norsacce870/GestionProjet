@@ -32,6 +32,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
 
+
+Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
+
 Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
 
 Route::get('/effectif/{id}', [PlayersController::class, 'show'])->name('web.effectif.show');
