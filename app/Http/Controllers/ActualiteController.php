@@ -32,15 +32,19 @@ class ActualiteController extends Controller
 
         $data = $request->all();
 
-        if ($request->hasFile('image')) {
+        /* if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->storeAs('public/actualites', $imageName);
             // Stocke le nom du fichier dans "contenu"
             $data['contenu'] = $imageName;
-        }
+        } */
 
-        Actualite::create($data);
+        $actualite = Actualite::create($data);
+
+        if ($request->hasFile('image')) {
+            $actualite->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         return redirect()->route('actualite.index')->with('success', 'Actualité ajoutée avec succès.');
     }
@@ -72,15 +76,20 @@ class ActualiteController extends Controller
         $actualite = Actualite::findOrFail($id);
         $data = $request->all();
 
-        if ($request->hasFile('image')) {
+        /* if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->storeAs('public/actualites', $imageName);
             // Stocke le nom du fichier dans "contenu"
             $data['contenu'] = $imageName;
-        }
+        } */
 
         $actualite->update($data);
+
+        if ($request->hasFile('image')) {
+            $actualite->clearMediaCollection('images');
+            $actualite->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         return redirect()->route('actualite.index')->with('success', 'Actualité mise à jour avec succès.');
     }

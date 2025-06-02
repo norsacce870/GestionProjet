@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\web\PlayersController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActualiteController;
@@ -13,21 +13,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\palmaresPublicController;
 
-
-
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/legendes', function () {
+    return view('legendes');
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
 
 Route::view('/presentation', 'presentation')->name('presentation');
-
+Route::get('/effectif', [PlayerController::class, 'index'])->name('web.effectif');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,15 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
-    Route::get('/palmaresPublic', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
-
-    Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
-
-
-
 });
-
-
 
 require __DIR__.'/auth.php';
 
