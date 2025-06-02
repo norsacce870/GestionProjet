@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\palmaresPublicController;
 use App\Http\Controllers\web\StaffController;
 use App\Http\Controllers\web\PlayersController;
 
@@ -30,6 +31,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
+Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
 
 
 Route::middleware('auth')->group(function () {

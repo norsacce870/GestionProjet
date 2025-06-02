@@ -149,6 +149,12 @@
             <img src="{{ asset('LOGO.png') }}" alt="Logo" class="w-12 logo-hover" />
             <a href="#" class="text-sm nav-link">Pratique</a>
             <a href="#" class="text-sm nav-link">Contact</a>
+            <a href="{{route('web.staff')}}" class="text-sm nav-link">Staff</a>
+            <a href="{{route('web.effectif')}}" class="text-sm nav-link">Effectif</a>
+            <a href="{{route('palmaresPublic.index')}}" class="text-sm nav-link">Palmares</a>
+
+            <input type="search" placeholder="Rechercher..."
+                class="w-62 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff5722]">
             {{-- <a href="{{ route('palmaresPublic.index') }}" class="text-sm nav-link">Palmares</a> --}}
         </div>
 
@@ -175,6 +181,8 @@
                     <a href="#" class="text-sm block py-2">Palmares</a>
                 </div>
             </div>
+
+
         </div>
     </header>
 
