@@ -16,7 +16,7 @@
                     <h5 class="text-xl font-semibold text-gray-800 mb-2">{{ $actu->nom }}</h5>
                     <p class="text-gray-600 flex-grow">{{ Str::limit($actu->contenu, 100) }}</p>
                     <a href="#"
-                        class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded hover:bg-blue-700 transition-colors mx-auto">
+                        class="mt-4 inline-block bg-orange-600 text-white text-sm font-medium py-2 px-4 rounded hover:bg-green-500 transition-colors mx-auto">
                         Voir plus
                     </a>
 
