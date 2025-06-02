@@ -31,11 +31,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
-<<<<<<< HEAD
 Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
-=======
+ 
 Route::get('/effectif/{id}', [PlayersController::class, 'show'])->name('web.effectif.show');
->>>>>>> 47f51ef624970c3e5cfd5f001ce70f3862ccb4d5
+
 
 
 Route::middleware('auth')->group(function () {
