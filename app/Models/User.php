@@ -11,11 +11,13 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Activitylog\Traits\CausesActivity;
+
 
 class User extends Authenticatable implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */ 
-    use HasFactory, Notifiable, InteractsWithMedia;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable, InteractsWithMedia, CausesActivity;
 
     /**
      * The attributes that are mass assignable.

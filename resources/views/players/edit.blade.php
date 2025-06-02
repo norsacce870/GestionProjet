@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 ">
+    <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
 
@@ -19,7 +19,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('players.update', $player) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('players.update', $player) }}" method="POST" enctype="multipart/form-data"nclass="space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -39,10 +39,14 @@
                         </div>
 
                         <div>
-                            <label for="poste"
-                                class="block font-medium text-sm text-gray-800 dark:text-white">Poste</label>
-                            <input type="text" name="poste" value="{{ old('poste', $player->poste) }}"
-                                class="mt-1 block w-full rounded-md shadow-sm text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
+                            <label for="poste" class="block font-medium text-sm text-gray-800 dark:text-white">Poste</label>
+                            <select name="poste" class="mt-1 block w-full rounded-md shadow-sm text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
+                                <option value="">-- Choisir un poste --</option>
+                                <option value="Attaquant" {{ old('poste', $player->poste) == 'Attaquant' ? 'selected' : '' }}>Attaquant</option>
+                                <option value="Milieu" {{ old('poste', $player->poste) == 'Milieu' ? 'selected' : '' }}>Milieu</option>
+                                <option value="Défenseur" {{ old('poste', $player->poste) == 'Défenseur' ? 'selected' : '' }}>Défenseur</option>
+                                <option value="Gardien" {{ old('poste', $player->poste) == 'Gardien' ? 'selected' : '' }}>Gardien</option>
+                            </select>
                         </div>
 
                         <div>
@@ -123,7 +127,6 @@
                             class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-5 py-2 rounded shadow">Annuler</a>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

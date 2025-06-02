@@ -9,27 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $players = Player::orderBy('created_at', 'desc')->paginate(10);
         return view('players.index', compact('players'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $users = User::all();
         return view('players.create', compact('users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -64,29 +55,26 @@ class PlayerController extends Controller
             $player->addMediaFromRequest('image')->toMediaCollection('players');
         }
 
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($player)
+            ->withProperties(['nom' => $player->nom, 'prenom' => $player->prenom])
+            ->log('Ajout d\'un joueur');
+
         return redirect()->route('players.index')->with('success', 'Joueur créé avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Player $player)
     {
         return view('players.show', compact('player'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Player $player)
     {
         $users = User::all();
         return view('players.edit', compact('player', 'users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Player $player)
     {
         $validated = $request->validate([
@@ -111,15 +99,27 @@ class PlayerController extends Controller
             $player->addMediaFromRequest('image')->toMediaCollection('players');
         }
 
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($player)
+            ->withProperties(['nom' => $player->nom, 'prenom' => $player->prenom])
+            ->log('Modification d\'un joueur');
+
         return redirect()->route('players.index')->with('success', 'Joueur modifié avec succès.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Player $player)
     {
+        $nom = $player->nom;
+        $prenom = $player->prenom;
+
         $player->delete();
+
+        activity()
+            ->causedBy(Auth::user())
+            ->withProperties(['nom' => $nom, 'prenom' => $prenom])
+            ->log('Suppression d\'un joueur');
+
         return redirect()->route('players.index')->with('success', 'Joueur supprimé avec succès.');
     }
 }

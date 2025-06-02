@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 ">
+    <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
 
@@ -35,8 +35,15 @@
 
                     <div>
                         <label for="poste" class="block font-medium text-sm text-gray-800 dark:text-white">Poste</label>
-                        <input type="text" name="poste" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow-sm" value="{{ old('poste') }}">
+                        <select name="poste" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow-sm">
+                            <option value="">-- Choisir un poste --</option>
+                            <option value="Attaquant" {{ old('poste') == 'Attaquant' ? 'selected' : '' }}>Attaquant</option>
+                            <option value="Milieu" {{ old('poste') == 'Milieu' ? 'selected' : '' }}>Milieu</option>
+                            <option value="Défenseur" {{ old('poste') == 'Défenseur' ? 'selected' : '' }}>Défenseur</option>
+                            <option value="Gardien" {{ old('poste') == 'Gardien' ? 'selected' : '' }}>Gardien</option>
+                        </select>
                     </div>
+
 
                     <div>
                         <label for="numero" class="block font-medium text-sm text-gray-800 dark:text-white">Numéro</label>

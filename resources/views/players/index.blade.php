@@ -27,11 +27,11 @@
                         <thead class="text-xs uppercase bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-100">
                             <tr>
                                 <th class="px-6 py-3">ID</th>
+                                <th class="px-6 py-3">Image</th>
                                 <th class="px-6 py-3">Nom</th>
                                 <th class="px-6 py-3">Prénom</th>
                                 <th class="px-6 py-3">Poste</th>
                                 <th class="px-6 py-3">Numéro</th>
-                                <th class="px-6 py-3">Club</th>
                                 <th class="px-6 py-3">Ajouté</th>
                                 <th class="px-6 py-3 text-center">Actions</th>
                             </tr>
@@ -40,28 +40,32 @@
                             @forelse ($players as $player)
                                 <tr class="text-gray-600 dark:text-gray-100 bg-white dark:bg-gray-800 transition">
                                     <td class="px-6 py-4">{{ $player->id }}</td>
+                                    <td class="px-6 py-4">
+                                        <img src="{{ $player->getFirstMediaUrl('players', 'small') ?: asset('images/default.jpg') }}"
+                                             alt="Photo de {{ $player->nom }}"
+                                             class="w-12 h-12 object-cover rounded-full border border-gray-300 dark:border-gray-600">
+                                    </td>
                                     <td class="px-6 py-4 font-medium">{{ $player->nom }}</td>
                                     <td class="px-6 py-4">{{ $player->prenom }}</td>
                                     <td class="px-6 py-4">{{ $player->poste }}</td>
                                     <td class="px-6 py-4">{{ $player->numero }}</td>
-                                    <td class="px-6 py-4">{{ $player->club }}</td>
                                     <td class="px-6 py-4">{{ $player->created_at->diffForHumans() }}</td>
                                     <td class="px-6 py-4 text-center space-x-2">
                                         <a href="{{ route('players.show', $player) }}"
-                                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-1.5 rounded-xl transition">
-                                            Voir
+                                            class="text-green-600 dark:text-green-400 hover:underline text-2xl hover:text-gray-400 duration-500 ">
+                                            <i class="bi bi-eye"></i></a>
                                         </a>
                                         <a href="{{ route('players.edit', $player) }}"
-                                           class="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-4 py-1.5 rounded-xl transition">
-                                            Modifier
+                                            class="text-[#EA580C] dark:text-orange-400 hover:text-gray-400 duration-500 hover:underline text-2xl">
+                                            <i class="bi bi-pencil-square"></i></a>
                                         </a>
                                         <form action="{{ route('players.destroy', $player) }}" method="POST" class="inline"
                                               onsubmit="return confirm('Confirmer la suppression ?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                    class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-1.5 rounded-xl transition">
-                                                Supprimer
+                                                class="text-red-700 dark:text-red-500 hover:text-gray-400 duration-500 hover:underline ml-2 text-2xl"><i
+                                                class="bi bi-trash"></i></button>
                                             </button>
                                         </form>
                                     </td>
