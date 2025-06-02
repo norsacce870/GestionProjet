@@ -12,6 +12,7 @@ use App\Http\Controllers\PubliciteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
+use App\Http\Controllers\palmaresPublicController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/legendes', function () {
@@ -28,6 +29,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::view('/presentation', 'presentation')->name('presentation');
 Route::get('/effectif', [PlayerController::class, 'index'])->name('web.effectif');
+Route::get('/palmares', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
