@@ -49,17 +49,18 @@
                     @foreach ($$key as $player)
                         <div class="relative rounded overflow-hidden shadow-lg">
                             <div class="relative w-full h-72 bg-gray-100">
-                                <img src="{{ $player->getFirstMediaUrl('players') ?: '/images/default-player.jpg' }}"
-                                    class="w-full h-full object-cover"
-                                    alt="Image de {{ $player->prenom }} {{ $player->nom }}">
-                                <div
-                                    class="absolute bottom-0 left-0 right-0 text-white flex items-center justify-start p-8 ">
-                                    <div class="flex items-center space-x-2 font-semibold text-left">
-                                        <div class="h-6 w-1 bg-orange-500"></div>
-                                        <span>{{ strtoupper($player->nom) }} {{ ucfirst($player->prenom) }}</span>
+                                <a href="{{ route('web.effectif.show', $player->id) }}">
+                                    <img src="{{ $player->getFirstMediaUrl('players') ?: '/images/default-player.jpg' }}"
+                                        class="w-full h-full object-cover"
+                                        alt="Image de {{ $player->prenom }} {{ $player->nom }}">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 text-white flex items-center justify-start p-8 ">
+                                        <div class="flex items-center space-x-2 font-semibold text-left">
+                                            <div class="h-6 w-1 bg-orange-500"></div>
+                                            <span>{{ strtoupper($player->nom) }} {{ ucfirst($player->prenom) }}</span>
+                                        </div>
                                     </div>
-                                </div>
-
+                                </a>
                             </div>
                         </div>
                     @endforeach
