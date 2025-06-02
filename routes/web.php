@@ -24,6 +24,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::view('/presentation', 'presentation')->name('presentation');
+ Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
 
 
 Route::middleware('auth')->group(function () {
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
-    Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
+
 
 
 
