@@ -19,4 +19,12 @@ class PlayersController extends Controller
 
         return view('web.effectif', compact('coachs', 'attaquants', 'milieux', 'defenseurs', 'gardiens' , 'videos'));
     }
+
+    public function show($id)
+    {
+        $joueur = Player::findOrFail($id);
+        return view('web.showEffectif', compact('joueur'));
+    }
+
+
 }
