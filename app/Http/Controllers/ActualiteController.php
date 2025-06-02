@@ -102,4 +102,6 @@ class ActualiteController extends Controller
 
         return redirect()->route('actualite.index')->with('success', 'Actualité supprimée avec succès.');
     }
+
+    
 }
