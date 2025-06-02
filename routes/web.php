@@ -28,7 +28,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::view('/presentation', 'presentation')->name('presentation');
-Route::get('/effectif', [PlayerController::class, 'index'])->name('web.effectif');
+Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
