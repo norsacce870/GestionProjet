@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/palmaresPublic', [palmaresPublicController::class, 'index'])->name('palmaresPublic.index');
 
     Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
-    Route::get('/effectif/{id}', [PlayersController::class, 'show'])->name('web.showEffectif');
 
 
 

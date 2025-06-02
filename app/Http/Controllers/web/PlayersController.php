@@ -22,8 +22,8 @@ class PlayersController extends Controller
 
     public function show($id)
     {
-        $joueur = Player::findOrFail($id);
-        return view('web.showEffectif', compact('joueur'));
+        $player = Player::findOrFail($id);
+        return view('web.showEffectif', compact('player'));
     }
 
 
