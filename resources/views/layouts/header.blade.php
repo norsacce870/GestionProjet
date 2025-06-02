@@ -143,11 +143,12 @@
     <header class="border-b">
         <!-- Navigation desktop -->
         <div class="max-w-screen-xl mx-auto px-4 py-4 hidden md:flex justify-center items-center gap-8">
-            <a href="#" class="text-[#ff5722] text-sm font-semibold nav-link">Accueil</a>
+            <a href="welcome" class="text-[#ff5722] text-sm font-semibold nav-link">Accueil</a>
             <a href="#" class="text-sm nav-link">Evénements</a>
             <img src="{{ asset('LOGO.png') }}" alt="Logo" class="w-12 logo-hover" />
             <a href="#" class="text-sm nav-link">Pratique</a>
             <a href="#" class="text-sm nav-link">Contact</a>
+              <a href="{{route('palmaresPublic.index')}}" class="text-sm nav-link">Palmares</a>
         </div>
 
         <!-- Navigation mobile avec menu hamburger -->
@@ -170,6 +171,7 @@
                     <a href="#" class="text-sm block py-2">Evénements</a>
                     <a href="#" class="text-sm block py-2">Pratique</a>
                     <a href="#" class="text-sm block py-2">Contact</a>
+                    <a href="#" class="text-sm block py-2">Palmares</a>
                 </div>
             </div>
         </div>

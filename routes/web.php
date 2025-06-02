@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\web\PlayersController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActualiteController;
@@ -14,6 +14,9 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
 
+Route::get('/legendes', function () {
+    return view('legendes');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,8 +27,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::view('/presentation', 'presentation')->name('presentation');
- Route::get('/effectif', [PlayersController::class, 'index'])->name('web.effectif');
-
+Route::get('/effectif', [PlayerController::class, 'index'])->name('web.effectif');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,13 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
-
-
-
-
 });
-
-
 
 require __DIR__.'/auth.php';
 
