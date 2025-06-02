@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Palmares;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class PalmaresController extends Controller
      */
     public function index()
 
-    {   $palmares = Palmares::orderBy('created_at', 'desc')->paginate(10);
+    {
+        $palmares = Palmares::orderBy('created_at', 'desc')->paginate(10);
         return view('palmares.index', compact('palmares'));
     }
 
@@ -26,23 +28,23 @@ class PalmaresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
-{
-    $request->validate([
-        'titre' => 'required',
-        'sous_titre' => 'required',
-        'valeur' => 'required',
-        'image' => 'nullable|image|max:2048'
-    ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'titre' => 'required',
+            'sous_titre' => 'required',
+            'valeur' => 'required',
+            'image' => 'nullable|image|max:2048'
+        ]);
 
-    $palmares = Palmares::create($request->only('titre', 'sous_titre', 'valeur'));
+        $palmares = Palmares::create($request->only('titre', 'sous_titre', 'valeur'));
 
-    if ($request->hasFile('image')) {
-        $palmares->addMediaFromRequest('image')->toMediaCollection('images');
+        if ($request->hasFile('image')) {
+            $palmares->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
+        return redirect()->route('palmares.index');
     }
-
-    return redirect()->route('palmares.index');
-}
 
     /**
      * Display the specified resource.
@@ -72,8 +74,15 @@ class PalmaresController extends Controller
             'titre' => 'required|string|max:255',
             'sous_titre' => 'required|string|max:255',
         ]);
+        $palmares = Palmares::findOrFail($id);
+        $data = $request->all();
 
+        $palmares->update($data);
 
+        if ($request->hasFile('image')) {
+            $palmares->clearMediaCollection('images');
+            $palmares->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         $palmares = Palmares::findOrFail($id);
         $palmares->update($request->all());
