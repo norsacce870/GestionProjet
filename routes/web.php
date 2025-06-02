@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PalmaresController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\web\StaffController;
 
 Route::get('/legendes', function () {
     return view('legendes');
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/user', UserController::class);
     Route::resource('admin/video', VideoController::class);
     Route::resource('admin/palmares', PalmaresController::class);
+    Route::get('/staff', [StaffController::class, 'index'])->name('web.staff');
 });
 
 require __DIR__.'/auth.php';
