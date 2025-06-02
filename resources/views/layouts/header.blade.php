@@ -153,8 +153,10 @@
             <a href="{{route('web.effectif')}}" class="text-sm nav-link">Effectif</a>
             <a href="{{route('palmaresPublic.index')}}" class="text-sm nav-link">Palmares</a>
 
-            <input type="search" placeholder="Rechercher..."
+            <form action="" method="GET">
+                <input type="search" placeholder="Rechercher..."
                 class="w-62 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff5722]">
+            </form>
             {{-- <a href="{{ route('palmaresPublic.index') }}" class="text-sm nav-link">Palmares</a> --}}
         </div>
 
